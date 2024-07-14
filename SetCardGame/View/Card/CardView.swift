@@ -23,21 +23,12 @@ struct CardView: View {
     
     @ViewBuilder
     var cardContent: some View {
-        let opacity: Double = switch card.shading {
-        case .open:
-            0
-        case .striped:
-            0.33
-        case .solid:
-            1
-        }
-        
         VStack {
             Spacer()
             ForEach(Array(0..<card.number.rawValue), id: \.self) { _ in
                 shape
                     .strokeBorder(.opacity(1))
-                    .fill(.opacity(opacity))
+                    .fill(.opacity(card.shading.opacity()))
                     .aspectRatio(2, contentMode: .fit)
                 Spacer()
             }

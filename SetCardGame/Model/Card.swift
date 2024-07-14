@@ -5,7 +5,7 @@
 //  Created by Rachel Lee on 7/13/24.
 //
 
-import SwiftUI
+import Foundation
 
 struct Card: Equatable, Identifiable, CustomDebugStringConvertible {
     let number: Number
@@ -40,10 +40,5 @@ struct Card: Equatable, Identifiable, CustomDebugStringConvertible {
         case red
         case green
         case purple
-        
-        var rawColor: SwiftUI.Color {
-            let colors: [Color: SwiftUI.Color] = [.red: .red, .green: .green, .purple: .purple]
-            return colors[self]!
-        }
     }
 }
