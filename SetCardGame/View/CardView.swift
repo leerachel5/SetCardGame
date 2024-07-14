@@ -14,8 +14,8 @@ struct CardView: View {
     let color: CardFeature.Color
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 25)
-            .strokeBorder(lineWidth: 10)
+        RoundedRectangle(cornerRadius: 16)
+            .strokeBorder()
             .foregroundStyle(.black)
             .overlay {
                 shape.view
@@ -23,15 +23,30 @@ struct CardView: View {
                     .aspectRatio(contentMode: .fit)
                     .padding()
             }
+            .aspectRatio(3/5, contentMode: .fit)
             .padding()
     }
 }
 
 #Preview {
-    CardView(
-        numberOfShapes: CardFeature.Number.one,
-        shape: CardFeature.Shape.squiggle,
-        shading: CardFeature.Shading.solid,
-        color: CardFeature.Color.purple
-    )
+    VStack {
+        CardView(
+            numberOfShapes: CardFeature.Number.one,
+            shape: CardFeature.Shape.squiggle,
+            shading: CardFeature.Shading.solid,
+            color: CardFeature.Color.purple
+        )
+        CardView(
+            numberOfShapes: CardFeature.Number.one,
+            shape: CardFeature.Shape.oval,
+            shading: CardFeature.Shading.solid,
+            color: CardFeature.Color.purple
+        )
+        CardView(
+            numberOfShapes: CardFeature.Number.one,
+            shape: CardFeature.Shape.diamond,
+            shading: CardFeature.Shading.solid,
+            color: CardFeature.Color.purple
+        )
+    }
 }
