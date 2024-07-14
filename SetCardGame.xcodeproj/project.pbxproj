@@ -15,9 +15,21 @@
 		EB74D9212C43522D00FBA58A /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9202C43522D00FBA58A /* Diamond.swift */; };
 		EB74D92A2C436C2E00FBA58A /* Squiggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9292C436C2E00FBA58A /* Squiggle.swift */; };
 		EB74D92F2C437E2A00FBA58A /* Oval.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D92E2C437E2A00FBA58A /* Oval.swift */; };
-		EB74D9312C43872400FBA58A /* Stripes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9302C43872400FBA58A /* Stripes.swift */; };
 		EB74D9352C439D3D00FBA58A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9342C439D3D00FBA58A /* Card.swift */; };
+		EB74D93A2C43AE9000FBA58A /* SetCardGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9392C43AE9000FBA58A /* SetCardGameViewModel.swift */; };
+		EB74D93C2C43AEAB00FBA58A /* SetCardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */; };
+		EB74D9442C43B78900FBA58A /* SetCardGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EB74D9452C43B78900FBA58A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB74D8FE2C4342B300FBA58A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB74D9052C4342B300FBA58A;
+			remoteInfo = SetCardGame;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EB74D9062C4342B300FBA58A /* SetCardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetCardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,12 +41,22 @@
 		EB74D9202C43522D00FBA58A /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		EB74D9292C436C2E00FBA58A /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
 		EB74D92E2C437E2A00FBA58A /* Oval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oval.swift; sourceTree = "<group>"; };
-		EB74D9302C43872400FBA58A /* Stripes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stripes.swift; sourceTree = "<group>"; };
 		EB74D9342C439D3D00FBA58A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		EB74D9392C43AE9000FBA58A /* SetCardGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameViewModel.swift; sourceTree = "<group>"; };
+		EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGame.swift; sourceTree = "<group>"; };
+		EB74D9412C43B78800FBA58A /* SetCardGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SetCardGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EB74D9032C4342B300FBA58A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB74D93E2C43B78800FBA58A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -48,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				EB74D9082C4342B300FBA58A /* SetCardGame */,
+				EB74D9422C43B78900FBA58A /* SetCardGameTests */,
 				EB74D9072C4342B300FBA58A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				EB74D9062C4342B300FBA58A /* SetCardGame.app */,
+				EB74D9412C43B78800FBA58A /* SetCardGameTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				EB74D9342C439D3D00FBA58A /* Card.swift */,
+				EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -102,6 +127,7 @@
 		EB74D9192C434B6A00FBA58A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				EB74D9392C43AE9000FBA58A /* SetCardGameViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -112,7 +138,6 @@
 				EB74D9202C43522D00FBA58A /* Diamond.swift */,
 				EB74D9292C436C2E00FBA58A /* Squiggle.swift */,
 				EB74D92E2C437E2A00FBA58A /* Oval.swift */,
-				EB74D9302C43872400FBA58A /* Stripes.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -123,6 +148,22 @@
 				EB74D91C2C434D5600FBA58A /* CardView.swift */,
 			);
 			path = Card;
+			sourceTree = "<group>";
+		};
+		EB74D9422C43B78900FBA58A /* SetCardGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				EB74D94A2C43B7A000FBA58A /* Model */,
+			);
+			path = SetCardGameTests;
+			sourceTree = "<group>";
+		};
+		EB74D94A2C43B7A000FBA58A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +186,24 @@
 			productReference = EB74D9062C4342B300FBA58A /* SetCardGame.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EB74D9402C43B78800FBA58A /* SetCardGameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB74D9472C43B78900FBA58A /* Build configuration list for PBXNativeTarget "SetCardGameTests" */;
+			buildPhases = (
+				EB74D93D2C43B78800FBA58A /* Sources */,
+				EB74D93E2C43B78800FBA58A /* Frameworks */,
+				EB74D93F2C43B78800FBA58A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB74D9462C43B78900FBA58A /* PBXTargetDependency */,
+			);
+			name = SetCardGameTests;
+			productName = SetCardGameTests;
+			productReference = EB74D9412C43B78800FBA58A /* SetCardGameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -157,6 +216,10 @@
 				TargetAttributes = {
 					EB74D9052C4342B300FBA58A = {
 						CreatedOnToolsVersion = 15.4;
+					};
+					EB74D9402C43B78800FBA58A = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = EB74D9052C4342B300FBA58A;
 					};
 				};
 			};
@@ -174,6 +237,7 @@
 			projectRoot = "";
 			targets = (
 				EB74D9052C4342B300FBA58A /* SetCardGame */,
+				EB74D9402C43B78800FBA58A /* SetCardGameTests */,
 			);
 		};
 /* End PBXProject section */
@@ -188,6 +252,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EB74D93F2C43B78800FBA58A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -196,9 +267,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB74D92A2C436C2E00FBA58A /* Squiggle.swift in Sources */,
+				EB74D93A2C43AE9000FBA58A /* SetCardGameViewModel.swift in Sources */,
 				EB74D9352C439D3D00FBA58A /* Card.swift in Sources */,
+				EB74D93C2C43AEAB00FBA58A /* SetCardGame.swift in Sources */,
 				EB74D90C2C4342B300FBA58A /* SetCardGameView.swift in Sources */,
-				EB74D9312C43872400FBA58A /* Stripes.swift in Sources */,
 				EB74D91D2C434D5600FBA58A /* CardView.swift in Sources */,
 				EB74D92F2C437E2A00FBA58A /* Oval.swift in Sources */,
 				EB74D90A2C4342B300FBA58A /* SetCardGameApp.swift in Sources */,
@@ -206,7 +278,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EB74D93D2C43B78800FBA58A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB74D9442C43B78900FBA58A /* SetCardGameTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EB74D9462C43B78900FBA58A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB74D9052C4342B300FBA58A /* SetCardGame */;
+			targetProxy = EB74D9452C43B78900FBA58A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		EB74D9122C4342B400FBA58A /* Debug */ = {
@@ -386,6 +474,42 @@
 			};
 			name = Release;
 		};
+		EB74D9482C43B78900FBA58A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3D6S8UMR62;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rachellee.ios-bootcamp.SetCardGameTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SetCardGame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SetCardGame";
+			};
+			name = Debug;
+		};
+		EB74D9492C43B78900FBA58A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3D6S8UMR62;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rachellee.ios-bootcamp.SetCardGameTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SetCardGame.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SetCardGame";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -403,6 +527,15 @@
 			buildConfigurations = (
 				EB74D9152C4342B400FBA58A /* Debug */,
 				EB74D9162C4342B400FBA58A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB74D9472C43B78900FBA58A /* Build configuration list for PBXNativeTarget "SetCardGameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB74D9482C43B78900FBA58A /* Debug */,
+				EB74D9492C43B78900FBA58A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -18,25 +18,25 @@ struct Card: Equatable, Identifiable, CustomDebugStringConvertible {
         "id: \(id), number: \(number), shape: \(shape), shading: \(shading), color: \(color)"
     }
     
-    enum Number: Int {
+    enum Number: Int, CaseIterable {
         case one = 1
         case two = 2
         case three = 3
     }
     
-    enum Shape {
+    enum Shape: CaseIterable {
         case diamond
         case squiggle
         case oval
     }
     
-    enum Shading {
+    enum Shading: CaseIterable {
         case solid
         case striped
         case open
     }
     
-    enum Color: String {
+    enum Color: String, CaseIterable {
         case red
         case green
         case purple

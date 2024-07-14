@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SetCardGameView: View {
+    @ObservedObject var viewModel = SetCardGameViewModel()
+    
     var body: some View {
         CardView(card: Card (
                 number: Card.Number.one,

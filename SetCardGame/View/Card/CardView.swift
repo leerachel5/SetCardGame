@@ -24,19 +24,34 @@ struct CardView: View {
     
     @ViewBuilder
     var cardContent: some View {
+        let opacity: Double = switch card.shading {
+        case .open:
+            0
+        case .striped:
+            0.33
+        case .solid:
+            1
+        }
+        
         VStack {
             Spacer()
             ForEach(Array(0..<card.number.rawValue), id: \.self) { _ in
                 switch card.shape {
                 case .squiggle:
                     Squiggle()
+                        .strokeBorder(.opacity(1))
+                        .fill(.opacity(opacity))
                         .aspectRatio(2, contentMode: .fit)
                 case .oval:
                     Oval()
+                        .strokeBorder(.opacity(1))
+                        .fill(.opacity(opacity))
                         .aspectRatio(2, contentMode: .fit)
                 case .diamond:
                     Diamond()
-                        .aspectRatio(2, contentMode: .fit)
+                        .strokeBorder(.opacity(1))
+                        .fill(.opacity(opacity))
+                        .aspectRatio(2, contentMode: .fill)
                 }
                 Spacer()
             }
@@ -59,7 +74,7 @@ struct CardView: View {
         CardView(card: Card (
                 number: Card.Number.two,
                 shape: Card.Shape.oval,
-                shading: Card.Shading.solid,
+                shading: Card.Shading.striped,
                 color: Card.Color.purple,
                 id: "2"
             )
@@ -67,7 +82,7 @@ struct CardView: View {
         CardView(card: Card (
                 number: Card.Number.three,
                 shape: Card.Shape.diamond,
-                shading: Card.Shading.solid,
+                shading: Card.Shading.open,
                 color: Card.Color.purple,
                 id: "3"
             )
