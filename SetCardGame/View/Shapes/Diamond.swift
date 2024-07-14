@@ -21,7 +21,7 @@ struct Diamond: Shape {
         p.addLine(to: rightVertex)
         p.addLine(to: bottomVertex)
         p.addLine(to: leftVertex)
-        p.addLine(to: topVertex)
+        p.closeSubpath()
         
         return p
     }

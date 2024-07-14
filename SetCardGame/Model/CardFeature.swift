@@ -19,15 +19,19 @@ struct CardFeature {
         case squiggle
         case oval
         
+        @ViewBuilder
         var view: some View {
-            switch self {
-            case .diamond:
-                Diamond()
-            case .squiggle:
-                Diamond()
-            case .oval:
-                Diamond()
+            Group {
+                switch self {
+                case .diamond:
+                    Diamond()
+                case .squiggle:
+                    Diamond()
+                case .oval:
+                    RoundedRectangle(cornerRadius: 72)
+                }
             }
+            .aspectRatio(1/2, contentMode: .fit)
         }
     }
     
