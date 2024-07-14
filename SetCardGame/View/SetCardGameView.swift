@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SetCardGameView: View {
     var body: some View {
-        Text("Set")
+        CardView()
     }
 }
 
