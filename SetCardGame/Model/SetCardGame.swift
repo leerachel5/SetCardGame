@@ -59,4 +59,20 @@ struct SetCardGame {
         }
         return nil
     }
+    
+    func matchSet(for selectedCards: Array<Card>) -> Bool {
+        // For each feature, the selected cards must display that feature as all the same or all different
+        
+        let numbers = selectedCards.map { $0.number }
+        let shape = selectedCards.map { $0.shape }
+        let shading = selectedCards.map { $0.shading }
+        let color = selectedCards.map { $0.color }
+        
+        guard numbers.allTheSame() || numbers.allDifferent() else { return false }
+        guard shape.allTheSame() || shape.allDifferent() else { return false }
+        guard shading.allTheSame() || shading.allDifferent() else { return false }
+        guard color.allTheSame() || color.allDifferent() else { return false }
+        
+        return true
+    }
 }

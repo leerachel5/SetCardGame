@@ -21,6 +21,7 @@
 		EB74D9442C43B78900FBA58A /* SetCardGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */; };
 		EB74D9502C447A2A00FBA58A /* AnyInsettableShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D94F2C447A2A00FBA58A /* AnyInsettableShape.swift */; };
 		EB74D9562C44908700FBA58A /* CardUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9552C44908700FBA58A /* CardUI.swift */; };
+		EB74D9582C4495FF00FBA58A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9572C4495FF00FBA58A /* Array+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameTests.swift; sourceTree = "<group>"; };
 		EB74D94F2C447A2A00FBA58A /* AnyInsettableShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyInsettableShape.swift; sourceTree = "<group>"; };
 		EB74D9552C44908700FBA58A /* CardUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardUI.swift; sourceTree = "<group>"; };
+		EB74D9572C4495FF00FBA58A /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				EB74D9172C434B5C00FBA58A /* Model */,
 				EB74D9182C434B6600FBA58A /* View */,
 				EB74D9192C434B6A00FBA58A /* ViewModel */,
+				EB74D9592C44960700FBA58A /* Extensions */,
 				EB74D90D2C4342B400FBA58A /* Assets.xcassets */,
 				EB74D90F2C4342B400FBA58A /* Preview Content */,
 			);
@@ -170,6 +173,14 @@
 				EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EB74D9592C44960700FBA58A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EB74D9572C4495FF00FBA58A /* Array+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +290,7 @@
 				EB74D90C2C4342B300FBA58A /* SetCardGameView.swift in Sources */,
 				EB74D9502C447A2A00FBA58A /* AnyInsettableShape.swift in Sources */,
 				EB74D91D2C434D5600FBA58A /* CardView.swift in Sources */,
+				EB74D9582C4495FF00FBA58A /* Array+Extensions.swift in Sources */,
 				EB74D92F2C437E2A00FBA58A /* Oval.swift in Sources */,
 				EB74D90A2C4342B300FBA58A /* SetCardGameApp.swift in Sources */,
 				EB74D9562C44908700FBA58A /* CardUI.swift in Sources */,
