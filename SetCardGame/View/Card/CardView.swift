@@ -35,15 +35,6 @@ struct CardView: View {
         VStack {
             Spacer()
             ForEach(Array(0..<card.number.rawValue), id: \.self) { _ in
-                
-            let shape = switch card.shape {
-            case .squiggle:
-                AnyInsettableShape(Squiggle())
-            case .oval:
-                AnyInsettableShape(Oval())
-            case .diamond:
-                AnyInsettableShape(Diamond())
-            }
                 shape
                     .strokeBorder(.opacity(1))
                     .fill(.opacity(opacity))
@@ -52,6 +43,17 @@ struct CardView: View {
             }
         }
         .foregroundStyle(card.color.rawColor)
+    }
+    
+    var shape: AnyInsettableShape {
+        switch card.shape {
+        case .squiggle:
+            AnyInsettableShape(Squiggle())
+        case .oval:
+            AnyInsettableShape(Oval())
+        case .diamond:
+            AnyInsettableShape(Diamond())
+        }
     }
 }
 
