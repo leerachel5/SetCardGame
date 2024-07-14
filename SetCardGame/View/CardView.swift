@@ -7,25 +7,31 @@
 
 import SwiftUI
 
-
-import SwiftUI
-
 struct CardView: View {
+    let numberOfShapes: CardFeature.Number
+    let shape: CardFeature.Shape
+    let shading: CardFeature.Shading
+    let color: CardFeature.Color
+    
     var body: some View {
         RoundedRectangle(cornerRadius: 25)
             .strokeBorder(lineWidth: 10)
-            .foregroundStyle(.orange)
+            .foregroundStyle(.black)
             .overlay {
-                cardContent
+                shape.view
+                    .foregroundColor(color.rawColor)
+                    .aspectRatio(contentMode: .fit)
+                    .padding()
             }
             .padding()
-    }
-    
-    var cardContent: some View {
-        Text("Card Content")
     }
 }
 
 #Preview {
-    CardView()
+    CardView(
+        numberOfShapes: CardFeature.Number.one,
+        shape: CardFeature.Shape.diamond,
+        shading: CardFeature.Shading.solid,
+        color: CardFeature.Color.purple
+    )
 }

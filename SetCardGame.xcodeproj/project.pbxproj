@@ -11,7 +11,9 @@
 		EB74D90C2C4342B300FBA58A /* SetCardGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D90B2C4342B300FBA58A /* SetCardGameView.swift */; };
 		EB74D90E2C4342B400FBA58A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB74D90D2C4342B400FBA58A /* Assets.xcassets */; };
 		EB74D9112C4342B400FBA58A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB74D9102C4342B400FBA58A /* Preview Assets.xcassets */; };
-		EB74D91B2C434BA200FBA58A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D91A2C434BA200FBA58A /* CardView.swift */; };
+		EB74D91D2C434D5600FBA58A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D91C2C434D5600FBA58A /* CardView.swift */; };
+		EB74D9212C43522D00FBA58A /* DiamondShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9202C43522D00FBA58A /* DiamondShape.swift */; };
+		EB74D9242C43584A00FBA58A /* CardFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9232C43584A00FBA58A /* CardFeature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +22,9 @@
 		EB74D90B2C4342B300FBA58A /* SetCardGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameView.swift; sourceTree = "<group>"; };
 		EB74D90D2C4342B400FBA58A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB74D9102C4342B400FBA58A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		EB74D91A2C434BA200FBA58A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		EB74D91C2C434D5600FBA58A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		EB74D9202C43522D00FBA58A /* DiamondShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondShape.swift; sourceTree = "<group>"; };
+		EB74D9232C43584A00FBA58A /* CardFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFeature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		EB74D9172C434B5C00FBA58A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EB74D9232C43584A00FBA58A /* CardFeature.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -82,7 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				EB74D90B2C4342B300FBA58A /* SetCardGameView.swift */,
-				EB74D91A2C434BA200FBA58A /* CardView.swift */,
+				EB74D91C2C434D5600FBA58A /* CardView.swift */,
+				EB74D9222C43581A00FBA58A /* Shapes */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -92,6 +98,14 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EB74D9222C43581A00FBA58A /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				EB74D9202C43522D00FBA58A /* DiamondShape.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,8 +179,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB74D90C2C4342B300FBA58A /* SetCardGameView.swift in Sources */,
-				EB74D91B2C434BA200FBA58A /* CardView.swift in Sources */,
+				EB74D91D2C434D5600FBA58A /* CardView.swift in Sources */,
+				EB74D9242C43584A00FBA58A /* CardFeature.swift in Sources */,
 				EB74D90A2C4342B300FBA58A /* SetCardGameApp.swift in Sources */,
+				EB74D9212C43522D00FBA58A /* DiamondShape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

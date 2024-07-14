@@ -9,7 +9,12 @@ import SwiftUI
 
 struct SetCardGameView: View {
     var body: some View {
-        CardView()
+        CardView(
+            numberOfShapes: CardFeature.Number.one,
+            shape: CardFeature.Shape.diamond,
+            shading: CardFeature.Shading.solid,
+            color: CardFeature.Color.red
+        )
     }
 }
 
