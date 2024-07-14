@@ -10,6 +10,8 @@ import Foundation
 class SetCardGameViewModel: ObservableObject {
     @Published private var game: SetCardGame
     
+    private var selectedCards: Array<Card> = []
+    
     init() {
         game = SetCardGame(numberOfStartingCards: 12)
     }
@@ -20,5 +22,9 @@ class SetCardGameViewModel: ObservableObject {
     
     var faceUpCards: Array<Card> {
         game.faceUpCards
+    }
+    
+    func select(card: Card) {
+        selectedCards.append(card)
     }
 }
