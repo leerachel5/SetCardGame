@@ -1,5 +1,5 @@
 //
-//  CardFeature.swift
+//  Card.swift
 //  SetCardGame
 //
 //  Created by Rachel Lee on 7/13/24.
@@ -7,7 +7,17 @@
 
 import SwiftUI
 
-struct CardFeature {
+struct Card: Equatable, Identifiable, CustomDebugStringConvertible {
+    let number: Number
+    let shape: Shape
+    let shading: Shading
+    let color: Color
+    
+    var id: String
+    var debugDescription: String {
+        "id: \(id), number: \(number), shape: \(shape), shading: \(shading), color: \(color)"
+    }
+    
     enum Number: Int {
         case one = 1
         case two = 2
@@ -18,24 +28,6 @@ struct CardFeature {
         case diamond
         case squiggle
         case oval
-        
-        @ViewBuilder
-        var view: some View {
-            Group {
-                switch self {
-                case .diamond:
-                    Diamond()
-                        .strokeBorder(lineWidth: 4)
-                case .squiggle:
-                    Squiggle()
-                        .strokeBorder(lineWidth: 4)
-                case .oval:
-                    Oval()
-                        .strokeBorder(lineWidth: 4)
-                }
-            }
-            .aspectRatio(2/1, contentMode: .fit)
-        }
     }
     
     enum Shading {

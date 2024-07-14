@@ -13,9 +13,10 @@
 		EB74D9112C4342B400FBA58A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB74D9102C4342B400FBA58A /* Preview Assets.xcassets */; };
 		EB74D91D2C434D5600FBA58A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D91C2C434D5600FBA58A /* CardView.swift */; };
 		EB74D9212C43522D00FBA58A /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9202C43522D00FBA58A /* Diamond.swift */; };
-		EB74D9242C43584A00FBA58A /* CardFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9232C43584A00FBA58A /* CardFeature.swift */; };
 		EB74D92A2C436C2E00FBA58A /* Squiggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9292C436C2E00FBA58A /* Squiggle.swift */; };
 		EB74D92F2C437E2A00FBA58A /* Oval.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D92E2C437E2A00FBA58A /* Oval.swift */; };
+		EB74D9312C43872400FBA58A /* Stripes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9302C43872400FBA58A /* Stripes.swift */; };
+		EB74D9352C439D3D00FBA58A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9342C439D3D00FBA58A /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,9 +27,10 @@
 		EB74D9102C4342B400FBA58A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB74D91C2C434D5600FBA58A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		EB74D9202C43522D00FBA58A /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
-		EB74D9232C43584A00FBA58A /* CardFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFeature.swift; sourceTree = "<group>"; };
 		EB74D9292C436C2E00FBA58A /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
 		EB74D92E2C437E2A00FBA58A /* Oval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oval.swift; sourceTree = "<group>"; };
+		EB74D9302C43872400FBA58A /* Stripes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stripes.swift; sourceTree = "<group>"; };
+		EB74D9342C439D3D00FBA58A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +84,7 @@
 		EB74D9172C434B5C00FBA58A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EB74D9232C43584A00FBA58A /* CardFeature.swift */,
+				EB74D9342C439D3D00FBA58A /* Card.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,6 +112,7 @@
 				EB74D9202C43522D00FBA58A /* Diamond.swift */,
 				EB74D9292C436C2E00FBA58A /* Squiggle.swift */,
 				EB74D92E2C437E2A00FBA58A /* Oval.swift */,
+				EB74D9302C43872400FBA58A /* Stripes.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -193,10 +196,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB74D92A2C436C2E00FBA58A /* Squiggle.swift in Sources */,
+				EB74D9352C439D3D00FBA58A /* Card.swift in Sources */,
 				EB74D90C2C4342B300FBA58A /* SetCardGameView.swift in Sources */,
+				EB74D9312C43872400FBA58A /* Stripes.swift in Sources */,
 				EB74D91D2C434D5600FBA58A /* CardView.swift in Sources */,
 				EB74D92F2C437E2A00FBA58A /* Oval.swift in Sources */,
-				EB74D9242C43584A00FBA58A /* CardFeature.swift in Sources */,
 				EB74D90A2C4342B300FBA58A /* SetCardGameApp.swift in Sources */,
 				EB74D9212C43522D00FBA58A /* Diamond.swift in Sources */,
 			);
