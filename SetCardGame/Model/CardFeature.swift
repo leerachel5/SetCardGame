@@ -25,11 +25,13 @@ struct CardFeature {
                 switch self {
                 case .diamond:
                     Diamond()
+                        .strokeBorder(lineWidth: 4)
                 case .squiggle:
                     Squiggle()
+                        .strokeBorder(lineWidth: 4)
                 case .oval:
-                    // TODO: Replace RoundedRectangle with custom Oval Shape implementation
-                    RoundedRectangle(cornerRadius: 72)
+                    Oval()
+                        .strokeBorder(lineWidth: 4)
                 }
             }
             .aspectRatio(2/1, contentMode: .fit)

@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct Diamond: Shape {
+struct Diamond: InsettableShape {
+    var insetAmount: CGFloat = 0
+    
     func path(in rect: CGRect) -> Path {
         let topVertex = CGPoint(x: rect.midX, y: 0)
         let rightVertex = CGPoint(x: rect.maxX, y: rect.midY)
@@ -24,5 +26,10 @@ struct Diamond: Shape {
         
         return path
     }
+    
+    func inset(by amount: CGFloat) -> some InsettableShape {
+        var diamond = self
+        diamond.insetAmount += amount
+        return diamond
+    }
 }
-

@@ -15,6 +15,7 @@
 		EB74D9212C43522D00FBA58A /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9202C43522D00FBA58A /* Diamond.swift */; };
 		EB74D9242C43584A00FBA58A /* CardFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9232C43584A00FBA58A /* CardFeature.swift */; };
 		EB74D92A2C436C2E00FBA58A /* Squiggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9292C436C2E00FBA58A /* Squiggle.swift */; };
+		EB74D92F2C437E2A00FBA58A /* Oval.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D92E2C437E2A00FBA58A /* Oval.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		EB74D9202C43522D00FBA58A /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		EB74D9232C43584A00FBA58A /* CardFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFeature.swift; sourceTree = "<group>"; };
 		EB74D9292C436C2E00FBA58A /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
+		EB74D92E2C437E2A00FBA58A /* Oval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oval.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				EB74D90B2C4342B300FBA58A /* SetCardGameView.swift */,
-				EB74D91C2C434D5600FBA58A /* CardView.swift */,
+				EB74D92D2C4376A100FBA58A /* Card */,
 				EB74D9222C43581A00FBA58A /* Shapes */,
 			);
 			path = View;
@@ -107,8 +109,17 @@
 			children = (
 				EB74D9202C43522D00FBA58A /* Diamond.swift */,
 				EB74D9292C436C2E00FBA58A /* Squiggle.swift */,
+				EB74D92E2C437E2A00FBA58A /* Oval.swift */,
 			);
 			path = Shapes;
+			sourceTree = "<group>";
+		};
+		EB74D92D2C4376A100FBA58A /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				EB74D91C2C434D5600FBA58A /* CardView.swift */,
+			);
+			path = Card;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +195,7 @@
 				EB74D92A2C436C2E00FBA58A /* Squiggle.swift in Sources */,
 				EB74D90C2C4342B300FBA58A /* SetCardGameView.swift in Sources */,
 				EB74D91D2C434D5600FBA58A /* CardView.swift in Sources */,
+				EB74D92F2C437E2A00FBA58A /* Oval.swift in Sources */,
 				EB74D9242C43584A00FBA58A /* CardFeature.swift in Sources */,
 				EB74D90A2C4342B300FBA58A /* SetCardGameApp.swift in Sources */,
 				EB74D9212C43522D00FBA58A /* Diamond.swift in Sources */,
