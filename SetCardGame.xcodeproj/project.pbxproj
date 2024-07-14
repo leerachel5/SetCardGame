@@ -12,7 +12,7 @@
 		EB74D90E2C4342B400FBA58A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB74D90D2C4342B400FBA58A /* Assets.xcassets */; };
 		EB74D9112C4342B400FBA58A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB74D9102C4342B400FBA58A /* Preview Assets.xcassets */; };
 		EB74D91D2C434D5600FBA58A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D91C2C434D5600FBA58A /* CardView.swift */; };
-		EB74D9212C43522D00FBA58A /* DiamondShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9202C43522D00FBA58A /* DiamondShape.swift */; };
+		EB74D9212C43522D00FBA58A /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9202C43522D00FBA58A /* Diamond.swift */; };
 		EB74D9242C43584A00FBA58A /* CardFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9232C43584A00FBA58A /* CardFeature.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,7 +23,7 @@
 		EB74D90D2C4342B400FBA58A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB74D9102C4342B400FBA58A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB74D91C2C434D5600FBA58A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		EB74D9202C43522D00FBA58A /* DiamondShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondShape.swift; sourceTree = "<group>"; };
+		EB74D9202C43522D00FBA58A /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		EB74D9232C43584A00FBA58A /* CardFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFeature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,7 +103,7 @@
 		EB74D9222C43581A00FBA58A /* Shapes */ = {
 			isa = PBXGroup;
 			children = (
-				EB74D9202C43522D00FBA58A /* DiamondShape.swift */,
+				EB74D9202C43522D00FBA58A /* Diamond.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -182,7 +182,7 @@
 				EB74D91D2C434D5600FBA58A /* CardView.swift in Sources */,
 				EB74D9242C43584A00FBA58A /* CardFeature.swift in Sources */,
 				EB74D90A2C4342B300FBA58A /* SetCardGameApp.swift in Sources */,
-				EB74D9212C43522D00FBA58A /* DiamondShape.swift in Sources */,
+				EB74D9212C43522D00FBA58A /* Diamond.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

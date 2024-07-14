@@ -22,11 +22,11 @@ struct CardFeature {
         var view: some View {
             switch self {
             case .diamond:
-                DiamondShape()
+                Diamond()
             case .squiggle:
-                DiamondShape()
+                Diamond()
             case .oval:
-                DiamondShape()
+                Diamond()
             }
         }
     }
