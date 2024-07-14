@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreGraphics
 
 struct Diamond: Shape {
     func path(in rect: CGRect) -> Path {
@@ -15,15 +14,15 @@ struct Diamond: Shape {
         let bottomVertex = CGPoint(x: rect.midX, y: rect.maxY)
         let leftVertex = CGPoint(x: 0, y: rect.midY)
         
-        var p = Path()
+        var path = Path()
         
-        p.move(to: topVertex)
-        p.addLine(to: rightVertex)
-        p.addLine(to: bottomVertex)
-        p.addLine(to: leftVertex)
-        p.closeSubpath()
+        path.move(to: topVertex)
+        path.addLine(to: rightVertex)
+        path.addLine(to: bottomVertex)
+        path.addLine(to: leftVertex)
+        path.closeSubpath()
         
-        return p
+        return path
     }
 }
 

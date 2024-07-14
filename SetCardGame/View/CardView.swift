@@ -30,7 +30,7 @@ struct CardView: View {
 #Preview {
     CardView(
         numberOfShapes: CardFeature.Number.one,
-        shape: CardFeature.Shape.oval,
+        shape: CardFeature.Shape.squiggle,
         shading: CardFeature.Shading.solid,
         color: CardFeature.Color.purple
     )

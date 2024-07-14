@@ -26,12 +26,13 @@ struct CardFeature {
                 case .diamond:
                     Diamond()
                 case .squiggle:
-                    Diamond()
+                    Squiggle()
                 case .oval:
+                    // TODO: Replace RoundedRectangle with custom Oval Shape implementation
                     RoundedRectangle(cornerRadius: 72)
                 }
             }
-            .aspectRatio(1/2, contentMode: .fit)
+            .aspectRatio(2/1, contentMode: .fit)
         }
     }
     
