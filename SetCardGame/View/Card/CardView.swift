@@ -35,23 +35,19 @@ struct CardView: View {
         VStack {
             Spacer()
             ForEach(Array(0..<card.number.rawValue), id: \.self) { _ in
-                switch card.shape {
-                case .squiggle:
-                    Squiggle()
-                        .strokeBorder(.opacity(1))
-                        .fill(.opacity(opacity))
-                        .aspectRatio(2, contentMode: .fit)
-                case .oval:
-                    Oval()
-                        .strokeBorder(.opacity(1))
-                        .fill(.opacity(opacity))
-                        .aspectRatio(2, contentMode: .fit)
-                case .diamond:
-                    Diamond()
-                        .strokeBorder(.opacity(1))
-                        .fill(.opacity(opacity))
-                        .aspectRatio(2, contentMode: .fit)
-                }
+                
+            let shape = switch card.shape {
+            case .squiggle:
+                AnyInsettableShape(Squiggle())
+            case .oval:
+                AnyInsettableShape(Oval())
+            case .diamond:
+                AnyInsettableShape(Diamond())
+            }
+                shape
+                    .strokeBorder(.opacity(1))
+                    .fill(.opacity(opacity))
+                    .aspectRatio(2, contentMode: .fit)
                 Spacer()
             }
         }

@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-struct Oval: InsettableShape {
-    var insetAmount: CGFloat = 0
-
+struct Oval: Shape {
     func path(in rect: CGRect) -> Path {
         let cornerRadius: CGFloat = max(rect.width / 5, rect.height / 5)
         
@@ -50,11 +48,5 @@ struct Oval: InsettableShape {
         path.closeSubpath()
         
         return path
-    }
-    
-    func inset(by amount: CGFloat) -> some InsettableShape {
-        var oval = self
-        oval.insetAmount += amount
-        return oval
     }
 }

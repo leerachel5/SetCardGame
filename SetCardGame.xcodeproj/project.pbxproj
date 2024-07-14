@@ -19,6 +19,7 @@
 		EB74D93A2C43AE9000FBA58A /* SetCardGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9392C43AE9000FBA58A /* SetCardGameViewModel.swift */; };
 		EB74D93C2C43AEAB00FBA58A /* SetCardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */; };
 		EB74D9442C43B78900FBA58A /* SetCardGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */; };
+		EB74D9502C447A2A00FBA58A /* AnyInsettableShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D94F2C447A2A00FBA58A /* AnyInsettableShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGame.swift; sourceTree = "<group>"; };
 		EB74D9412C43B78800FBA58A /* SetCardGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SetCardGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameTests.swift; sourceTree = "<group>"; };
+		EB74D94F2C447A2A00FBA58A /* AnyInsettableShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyInsettableShape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				EB74D9202C43522D00FBA58A /* Diamond.swift */,
 				EB74D9292C436C2E00FBA58A /* Squiggle.swift */,
 				EB74D92E2C437E2A00FBA58A /* Oval.swift */,
+				EB74D94F2C447A2A00FBA58A /* AnyInsettableShape.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				EB74D9352C439D3D00FBA58A /* Card.swift in Sources */,
 				EB74D93C2C43AEAB00FBA58A /* SetCardGame.swift in Sources */,
 				EB74D90C2C4342B300FBA58A /* SetCardGameView.swift in Sources */,
+				EB74D9502C447A2A00FBA58A /* AnyInsettableShape.swift in Sources */,
 				EB74D91D2C434D5600FBA58A /* CardView.swift in Sources */,
 				EB74D92F2C437E2A00FBA58A /* Oval.swift in Sources */,
 				EB74D90A2C4342B300FBA58A /* SetCardGameApp.swift in Sources */,

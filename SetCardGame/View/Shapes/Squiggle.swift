@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-struct Squiggle: InsettableShape {
-    var insetAmount: CGFloat = 0
-    
+struct Squiggle: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
                 
@@ -43,11 +41,5 @@ struct Squiggle: InsettableShape {
         
         return path
             .offsetBy(dx: rect.minX - path.boundingRect.minX, dy: rect.midY - path.boundingRect.midY)
-    }
-    
-    func inset(by amount: CGFloat) -> some InsettableShape {
-        var squiggle = self
-        squiggle.insetAmount += amount
-        return squiggle
     }
 }
