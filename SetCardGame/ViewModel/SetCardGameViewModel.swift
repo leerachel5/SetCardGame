@@ -13,4 +13,12 @@ class SetCardGameViewModel: ObservableObject {
     init() {
         game = SetCardGame(numberOfStartingCards: 12)
     }
+    
+    var deck: Array<Card> {
+        game.deck
+    }
+    
+    var faceUpCards: Array<Card> {
+        game.faceUpCards
+    }
 }

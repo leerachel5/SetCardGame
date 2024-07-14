@@ -27,10 +27,6 @@ final class SetCardGameTests: XCTestCase {
         }
     }
     
-    func testInitializationGeneratesAllPossibleCardCombinations() {
-        // TODO: IMPLEMENT
-    }
-    
     func testDrawnFaceUpCardsAreRemovedFromDeck() {
         var game = SetCardGame()
         

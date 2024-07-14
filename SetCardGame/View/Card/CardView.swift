@@ -19,7 +19,6 @@ struct CardView: View {
                     .padding()
             }
             .aspectRatio(2/3, contentMode: .fit)
-            .padding()
     }
     
     @ViewBuilder
@@ -51,7 +50,7 @@ struct CardView: View {
                     Diamond()
                         .strokeBorder(.opacity(1))
                         .fill(.opacity(opacity))
-                        .aspectRatio(2, contentMode: .fill)
+                        .aspectRatio(2, contentMode: .fit)
                 }
                 Spacer()
             }
@@ -65,7 +64,7 @@ struct CardView: View {
     VStack {
         CardView(card: Card (
                 number: Card.Number.one,
-                shape: Card.Shape.squiggle,
+                shape: Card.Shape.diamond,
                 shading: Card.Shading.solid,
                 color: Card.Color.purple,
                 id: "1"
@@ -81,7 +80,7 @@ struct CardView: View {
         )
         CardView(card: Card (
                 number: Card.Number.three,
-                shape: Card.Shape.diamond,
+                shape: Card.Shape.squiggle,
                 shading: Card.Shading.open,
                 color: Card.Color.purple,
                 id: "3"

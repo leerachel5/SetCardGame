@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct SetCardGameView: View {
-    @ObservedObject var viewModel = SetCardGameViewModel()
+    @ObservedObject var setGame = SetCardGameViewModel()
     
     var body: some View {
-        CardView(card: Card (
-                number: Card.Number.one,
-                shape: Card.Shape.squiggle,
-                shading: Card.Shading.solid,
-                color: Card.Color.purple,
-                id: "1"
-            )
-        )
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
+                ForEach(setGame.faceUpCards) { card in
+                    CardView(card: card)
+                }
+            }
+            .padding()
+        }
     }
 }
 
