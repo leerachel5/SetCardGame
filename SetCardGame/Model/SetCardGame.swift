@@ -82,6 +82,7 @@ struct SetCardGame {
         guard color.allTheSame() || color.allDifferent() else { return false }
         
         removeCardsFromFaceUpPile(selectedCards)
+        drawFaceUpCards(count: 3)
         
         return true
     }

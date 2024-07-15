@@ -9,11 +9,13 @@ import Foundation
 
 class SetCardGameViewModel: ObservableObject {
     @Published private var game: SetCardGame
+    @Published private(set) var score: Int
     
     private var selectedCards: Array<Card> = []
     
     init() {
         game = SetCardGame(numberOfStartingCards: 12)
+        score = 0
     }
     
     var deck: Array<Card> {
@@ -36,8 +38,11 @@ class SetCardGameViewModel: ObservableObject {
         }
         
         do {
-            print("Selected Cards: \(selectedCards)")
-            return try game.matchSet(for: selectedCards)
+            let matched = try game.matchSet(for: selectedCards)
+            if matched {
+                score += 1
+            }
+            return matched
         } catch {
             print("Error matching with selected cards, \(error.localizedDescription)")
         }

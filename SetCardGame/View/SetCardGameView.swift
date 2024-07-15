@@ -11,6 +11,8 @@ struct SetCardGameView: View {
     @ObservedObject var setGame = SetCardGameViewModel()
     
     var body: some View {
+        Text("Score: \(setGame.score)")
+        
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
                 ForEach(setGame.faceUpCards) { card in
@@ -23,8 +25,7 @@ struct SetCardGameView: View {
             .padding()
         }
         Button(action: {
-            let matched = setGame.matchSet()
-            print("Matched: \(matched)")
+            let _ = setGame.matchSet()
         }, label: {
             Text("Match Set")
         })
