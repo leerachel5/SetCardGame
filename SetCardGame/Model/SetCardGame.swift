@@ -62,6 +62,10 @@ struct SetCardGame {
     mutating func matchSet(for selectedCards: Array<Card>) throws -> Bool {
         // For each feature, the selected cards must display that feature as all the same or all different
         
+        guard selectedCards.count == 3 else {
+            throw CardSelectionError.invalidNumberOfCardsInSet
+        }
+        
         guard faceUpCards.contains(selectedCards) else {
             throw CardSelectionError.selectedCardNotFaceUp
         }

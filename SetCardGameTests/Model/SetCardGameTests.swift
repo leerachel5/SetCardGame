@@ -182,6 +182,30 @@ final class SetCardGameTests: XCTestCase {
         XCTAssertFalse((try? game.matchSet(for: set)) ?? false)
     }
     
+    func testMatchSetWithLessThan3CardsThrowsError() {
+        var game = SetCardGame()
+        
+        let set = [
+            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
+            Card(number: .two, shape: .diamond, shading: .open, color: .green, id: "2"),
+        ]
+        
+        XCTAssertThrowsError(try game.matchSet(for: set))
+    }
+    
+    func testMatchSetWithMoreThan3CardsThrowsError() {
+        var game = SetCardGame()
+        
+        let set = [
+            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
+            Card(number: .two, shape: .diamond, shading: .open, color: .green, id: "2"),
+            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
+            Card(number: .three, shape: .squiggle, shading: .striped, color: .green, id: "4"),
+        ]
+        
+        XCTAssertThrowsError(try game.matchSet(for: set))
+    }
+    
     func testMatchSetWithNonFaceUpCardsThrowsError() {
         var game = SetCardGame()
         
