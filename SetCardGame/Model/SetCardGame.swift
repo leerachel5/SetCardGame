@@ -51,16 +51,15 @@ struct SetCardGame {
         }
     }
     
-    mutating func removeFaceUpCard(forId cardIdToRemove: String) -> Card? {
+    mutating private func removeCardsFromFaceUpPile(_ set: Array<Card>) {
         for card in faceUpCards {
-            if card.id == cardIdToRemove {
-                return faceUpCards.remove(at: faceUpCards.firstIndex(of: card)!)
+            if set.contains(card) {
+                faceUpCards.remove(at: faceUpCards.firstIndex(of: card)!)
             }
         }
-        return nil
     }
     
-    func matchSet(for selectedCards: Array<Card>) throws -> Bool {
+    mutating func matchSet(for selectedCards: Array<Card>) throws -> Bool {
         // For each feature, the selected cards must display that feature as all the same or all different
         
         guard faceUpCards.contains(selectedCards) else {
@@ -76,6 +75,8 @@ struct SetCardGame {
         guard shape.allTheSame() || shape.allDifferent() else { return false }
         guard shading.allTheSame() || shading.allDifferent() else { return false }
         guard color.allTheSame() || color.allDifferent() else { return false }
+        
+        removeCardsFromFaceUpPile(selectedCards)
         
         return true
     }

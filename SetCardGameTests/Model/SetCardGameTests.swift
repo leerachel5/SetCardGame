@@ -46,15 +46,6 @@ final class SetCardGameTests: XCTestCase {
         XCTAssertEqual(game.faceUpCards.count, numberOfCardsToDraw)
     }
     
-    func testRemoveFaceUpCardForId() {
-        var game = SetCardGame(numberOfStartingCards: 12)
-        
-        let cardIdToRemove = game.faceUpCards.first!.id
-        let removedCard = game.removeFaceUpCard(forId: cardIdToRemove)
-        
-        XCTAssertFalse(game.faceUpCards.contains(removedCard!))
-    }
-    
     func testMatchSetFor3AllSameFeaturesAnd1AllDifferentFeature() {
         var game = SetCardGame()
         
@@ -109,6 +100,30 @@ final class SetCardGameTests: XCTestCase {
         game.setFaceUpCards(to: set)
         
         XCTAssertTrue((try? game.matchSet(for: set)) ?? false)
+    }
+    
+    func testMatchSetRemovesOnlyMatchedCardsFromFaceUpPile() {
+        var game = SetCardGame()
+        
+        let set = [
+            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
+            Card(number: .two, shape: .diamond, shading: .open, color: .green, id: "3"),
+            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "4"),
+        ]
+        
+        let extraFaceUpCards = [
+            Card(number: .three, shape: .squiggle, shading: .striped, color: .green, id: "2"),
+            Card(number: .one, shape: .squiggle, shading: .striped, color: .red, id: "5"),
+        ]
+        
+        let faceUpCards = set + extraFaceUpCards
+        
+        game.setFaceUpCards(to: faceUpCards)
+        
+        let _ = try! game.matchSet(for: set)
+        
+        XCTAssertFalse(game.faceUpCards.contains(set))
+        XCTAssertTrue(game.faceUpCards.contains(extraFaceUpCards))
     }
     
     func testMatchSetReturnsFalseForInvalidNumberCombination() {
@@ -168,7 +183,7 @@ final class SetCardGameTests: XCTestCase {
     }
     
     func testMatchSetWithNonFaceUpCardsThrowsError() {
-        let game = SetCardGame()
+        var game = SetCardGame()
         
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
