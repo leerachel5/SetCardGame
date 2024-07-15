@@ -24,11 +24,19 @@ struct SetCardGameView: View {
             }
             .padding()
         }
-        Button(action: {
-            let _ = setGame.matchSet()
-        }, label: {
-            Text("Match Set")
-        })
+        HStack {
+            Button(action: {
+                setGame.drawCards()
+            }, label: {
+                Text("Draw")
+            })
+            
+            Button(action: {
+                let _ = setGame.matchSet()
+            }, label: {
+                Text("Match")
+            })
+        }
     }
 }
 

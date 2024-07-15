@@ -82,7 +82,11 @@ struct SetCardGame {
         guard color.allTheSame() || color.allDifferent() else { return false }
         
         removeCardsFromFaceUpPile(selectedCards)
-        drawFaceUpCards(count: 3)
+        
+        let numberOfCardsToDraw = 12 - faceUpCards.count
+        if numberOfCardsToDraw > 0 {
+            drawFaceUpCards(count: numberOfCardsToDraw)
+        }
         
         return true
     }

@@ -40,6 +40,10 @@ class SetCardGameViewModel: ObservableObject {
         return selectedCards.contains(card)
     }
     
+    func drawCards() {
+        game.drawFaceUpCards(count: 3)
+    }
+    
     func matchSet() -> Bool {
         defer {
             selectedCards.removeAll()
