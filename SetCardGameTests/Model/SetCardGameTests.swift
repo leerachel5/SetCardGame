@@ -122,8 +122,11 @@ final class SetCardGameTests: XCTestCase {
         
         let _ = try! game.matchSet(for: set)
         
-        XCTAssertFalse(game.faceUpCards.contains(set))
-        XCTAssertTrue(game.faceUpCards.contains(extraFaceUpCards))
+        print(game.faceUpCards)
+        print(extraFaceUpCards)
+        
+        XCTAssertFalse(game.faceUpCards.containsAllElements(in: set))
+        XCTAssertTrue(game.faceUpCards.containsAllElements(in: extraFaceUpCards))
     }
     
     func testMatchSetReturnsFalseForInvalidNumberCombination() {

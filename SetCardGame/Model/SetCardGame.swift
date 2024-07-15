@@ -66,7 +66,8 @@ struct SetCardGame {
             throw CardSelectionError.invalidNumberOfCardsInSet
         }
         
-        guard faceUpCards.contains(selectedCards) else {
+        let cardsInFaceUp = faceUpCards.containsAllElements(in: selectedCards)
+        guard cardsInFaceUp else {
             throw CardSelectionError.selectedCardNotFaceUp
         }
         

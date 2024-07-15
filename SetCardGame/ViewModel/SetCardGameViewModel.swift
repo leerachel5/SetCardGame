@@ -25,6 +25,22 @@ class SetCardGameViewModel: ObservableObject {
     }
     
     func select(card: Card) {
-        selectedCards.append(card)
+        if selectedCards.count < 3 {
+            selectedCards.append(card)
+        }
+    }
+    
+    func matchSet() -> Bool {
+        defer {
+            selectedCards.removeAll()
+        }
+        
+        do {
+            print("Selected Cards: \(selectedCards)")
+            return try game.matchSet(for: selectedCards)
+        } catch {
+            print("Error matching with selected cards, \(error.localizedDescription)")
+        }
+        return false
     }
 }

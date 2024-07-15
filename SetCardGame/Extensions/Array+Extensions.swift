@@ -7,6 +7,12 @@
 
 import Foundation
 
+extension Array where Iterator.Element: Equatable {
+    func containsAllElements(in other: Array) -> Bool {
+        return other.allSatisfy(self.contains)
+    }
+}
+
 extension Array where Iterator.Element: Hashable {
     func allTheSame() -> Bool {
         self.allSatisfy({ $0 == self.first })

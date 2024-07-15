@@ -22,6 +22,12 @@ struct SetCardGameView: View {
             }
             .padding()
         }
+        Button(action: {
+            let matched = setGame.matchSet()
+            print("Matched: \(matched)")
+        }, label: {
+            Text("Match Set")
+        })
     }
 }
 
