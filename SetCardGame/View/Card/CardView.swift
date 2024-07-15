@@ -9,10 +9,11 @@ import SwiftUI
 
 struct CardView: View {
     let card: Card
+    let isSelected: Bool
     
     var body: some View {
         RoundedRectangle(cornerRadius: 16)
-            .strokeBorder()
+            .strokeBorder(isSelected ? .yellow : .black)
             .foregroundStyle(.black)
             .overlay {
                 cardContent
@@ -57,7 +58,7 @@ struct CardView: View {
                 shading: Card.Shading.solid,
                 color: Card.Color.purple,
                 id: "1"
-            )
+            ), isSelected: false
         )
         CardView(card: Card (
                 number: Card.Number.two,
@@ -65,7 +66,7 @@ struct CardView: View {
                 shading: Card.Shading.striped,
                 color: Card.Color.purple,
                 id: "2"
-            )
+            ), isSelected: true
         )
         CardView(card: Card (
                 number: Card.Number.three,
@@ -73,7 +74,7 @@ struct CardView: View {
                 shading: Card.Shading.open,
                 color: Card.Color.purple,
                 id: "3"
-            )
+            ), isSelected: false
         )
     }
 }

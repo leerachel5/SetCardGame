@@ -11,7 +11,7 @@ class SetCardGameViewModel: ObservableObject {
     @Published private var game: SetCardGame
     @Published private(set) var score: Int
     
-    private var selectedCards: Array<Card> = []
+    @Published private var selectedCards = Set<Card>()
     
     init() {
         game = SetCardGame(numberOfStartingCards: 12)
@@ -27,9 +27,17 @@ class SetCardGameViewModel: ObservableObject {
     }
     
     func select(card: Card) {
-        if selectedCards.count < 3 {
-            selectedCards.append(card)
+        if selectedCards.contains(card) {
+            selectedCards.remove(card)
+        } else {
+            if selectedCards.count < 3 {
+                selectedCards.insert(card)
+            }
         }
+    }
+    
+    func cardIsSelected(_ card: Card) -> Bool {
+        return selectedCards.contains(card)
     }
     
     func matchSet() -> Bool {

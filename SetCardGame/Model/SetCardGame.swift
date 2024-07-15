@@ -51,7 +51,7 @@ struct SetCardGame {
         }
     }
     
-    mutating private func removeCardsFromFaceUpPile(_ set: Array<Card>) {
+    mutating private func removeCardsFromFaceUpPile(_ set: Set<Card>) {
         for card in faceUpCards {
             if set.contains(card) {
                 faceUpCards.remove(at: faceUpCards.firstIndex(of: card)!)
@@ -59,15 +59,15 @@ struct SetCardGame {
         }
     }
     
-    mutating func matchSet(for selectedCards: Array<Card>) throws -> Bool {
+    mutating func matchSet(for selectedCards: Set<Card>) throws -> Bool {
         // For each feature, the selected cards must display that feature as all the same or all different
         
         guard selectedCards.count == 3 else {
             throw CardSelectionError.invalidNumberOfCardsInSet
         }
         
-        let cardsInFaceUp = faceUpCards.containsAllElements(in: selectedCards)
-        guard cardsInFaceUp else {
+        let faceUpPileContainsSelectedCards = faceUpCards.containsAllElements(in: selectedCards)
+        guard faceUpPileContainsSelectedCards else {
             throw CardSelectionError.selectedCardNotFaceUp
         }
         

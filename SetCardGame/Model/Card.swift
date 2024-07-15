@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card: Equatable, Identifiable, CustomDebugStringConvertible {
+struct Card: Hashable, Identifiable, CustomDebugStringConvertible {
     let number: Number
     let shape: Shape
     let shading: Shading
