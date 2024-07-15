@@ -90,8 +90,8 @@ struct SetCardGame {
 
 #if DEBUG
 extension SetCardGame {
-    mutating func setFaceUpCards(to cards: Array<Card>) {
-        faceUpCards = cards
+    mutating func setFaceUpCards<C: Collection>(to cards: C) where C.Element == Card {
+        faceUpCards = Array(cards)
     }
 }
 #endif
