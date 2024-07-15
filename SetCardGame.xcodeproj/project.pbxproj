@@ -22,6 +22,7 @@
 		EB74D9502C447A2A00FBA58A /* AnyInsettableShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D94F2C447A2A00FBA58A /* AnyInsettableShape.swift */; };
 		EB74D9562C44908700FBA58A /* CardUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9552C44908700FBA58A /* CardUI.swift */; };
 		EB74D9582C4495FF00FBA58A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9572C4495FF00FBA58A /* Array+Extensions.swift */; };
+		EB74D95B2C449D2400FBA58A /* CardSelectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D95A2C449D2400FBA58A /* CardSelectionError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		EB74D94F2C447A2A00FBA58A /* AnyInsettableShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyInsettableShape.swift; sourceTree = "<group>"; };
 		EB74D9552C44908700FBA58A /* CardUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardUI.swift; sourceTree = "<group>"; };
 		EB74D9572C4495FF00FBA58A /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		EB74D95A2C449D2400FBA58A /* CardSelectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectionError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		EB74D9172C434B5C00FBA58A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EB74D95D2C449DA400FBA58A /* Errors */,
 				EB74D9342C439D3D00FBA58A /* Card.swift */,
 				EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */,
 			);
@@ -181,6 +184,14 @@
 				EB74D9572C4495FF00FBA58A /* Array+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EB74D95D2C449DA400FBA58A /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				EB74D95A2C449D2400FBA58A /* CardSelectionError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +305,7 @@
 				EB74D92F2C437E2A00FBA58A /* Oval.swift in Sources */,
 				EB74D90A2C4342B300FBA58A /* SetCardGameApp.swift in Sources */,
 				EB74D9562C44908700FBA58A /* CardUI.swift in Sources */,
+				EB74D95B2C449D2400FBA58A /* CardSelectionError.swift in Sources */,
 				EB74D9212C43522D00FBA58A /* Diamond.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -56,7 +56,7 @@ final class SetCardGameTests: XCTestCase {
     }
     
     func testMatchSetFor3AllSameFeaturesAnd1AllDifferentFeature() {
-        let game = SetCardGame()
+        var game = SetCardGame()
         
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
@@ -64,11 +64,13 @@ final class SetCardGameTests: XCTestCase {
             Card(number: .one, shape: .oval, shading: .solid, color: .red, id: "3"),
         ]
         
-        XCTAssertTrue(game.matchSet(for: set))
+        game.setFaceUpCards(to: set)
+        
+        XCTAssertTrue((try? game.matchSet(for: set)) ?? false)
     }
     
     func testMatchSetFor2AllSameFeaturesAnd2AllDifferentFeatures() {
-        let game = SetCardGame()
+        var game = SetCardGame()
         
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
@@ -76,11 +78,13 @@ final class SetCardGameTests: XCTestCase {
             Card(number: .one, shape: .oval, shading: .striped, color: .red, id: "3"),
         ]
         
-        XCTAssertTrue(game.matchSet(for: set))
+        game.setFaceUpCards(to: set)
+        
+        XCTAssertTrue((try? game.matchSet(for: set)) ?? false)
     }
     
     func testMatchSetFor1AllSameFeatureAnd3AllDifferentFeatures() {
-        let game = SetCardGame()
+        var game = SetCardGame()
         
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
@@ -88,10 +92,82 @@ final class SetCardGameTests: XCTestCase {
             Card(number: .one, shape: .squiggle, shading: .striped, color: .red, id: "3"),
         ]
         
-        XCTAssertTrue(game.matchSet(for: set))
+        game.setFaceUpCards(to: set)
+        
+        XCTAssertTrue((try? game.matchSet(for: set)) ?? false)
     }
     
     func testMatchSetFor4AllDifferentFeatures() {
+        var game = SetCardGame()
+        
+        let set = [
+            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
+            Card(number: .two, shape: .diamond, shading: .open, color: .green, id: "2"),
+            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
+        ]
+        
+        game.setFaceUpCards(to: set)
+        
+        XCTAssertTrue((try? game.matchSet(for: set)) ?? false)
+    }
+    
+    func testMatchSetReturnsFalseForInvalidNumberCombination() {
+        var game = SetCardGame()
+        
+        let set = [
+            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
+            Card(number: .one, shape: .diamond, shading: .open, color: .green, id: "2"),
+            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
+        ]
+        
+        game.setFaceUpCards(to: set)
+        
+        XCTAssertFalse((try? game.matchSet(for: set)) ?? false)
+    }
+    
+    func testMatchSetReturnsFalseForInvalidShapeCombination() {
+        var game = SetCardGame()
+        
+        let set = [
+            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
+            Card(number: .two, shape: .oval, shading: .open, color: .green, id: "2"),
+            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
+        ]
+        
+        game.setFaceUpCards(to: set)
+        
+        XCTAssertFalse((try? game.matchSet(for: set)) ?? false)
+    }
+    
+    func testMatchSetReturnsFalseForInvalidShadingCombination() {
+        var game = SetCardGame()
+        
+        let set = [
+            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
+            Card(number: .two, shape: .diamond, shading: .solid, color: .green, id: "2"),
+            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
+        ]
+        
+        game.setFaceUpCards(to: set)
+        
+        XCTAssertFalse((try? game.matchSet(for: set)) ?? false)
+    }
+    
+    func testMatchSetReturnsFalseForInvalidColorCombination() {
+        var game = SetCardGame()
+        
+        let set = [
+            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
+            Card(number: .two, shape: .diamond, shading: .open, color: .purple, id: "2"),
+            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
+        ]
+        
+        game.setFaceUpCards(to: set)
+        
+        XCTAssertFalse((try? game.matchSet(for: set)) ?? false)
+    }
+    
+    func testMatchSetWithNonFaceUpCardsThrowsError() {
         let game = SetCardGame()
         
         let set = [
@@ -100,54 +176,6 @@ final class SetCardGameTests: XCTestCase {
             Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
         ]
         
-        XCTAssertTrue(game.matchSet(for: set))
-    }
-    
-    func testMatchSetReturnsFalseForInvalidNumberCombination() {
-        let game = SetCardGame()
-        
-        let set = [
-            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
-            Card(number: .one, shape: .diamond, shading: .open, color: .green, id: "2"),
-            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
-        ]
-        
-        XCTAssertFalse(game.matchSet(for: set))
-    }
-    
-    func testMatchSetReturnsFalseForInvalidShapeCombination() {
-        let game = SetCardGame()
-        
-        let set = [
-            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
-            Card(number: .two, shape: .oval, shading: .open, color: .green, id: "2"),
-            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
-        ]
-        
-        XCTAssertFalse(game.matchSet(for: set))
-    }
-    
-    func testMatchSetReturnsFalseForInvalidShadingCombination() {
-        let game = SetCardGame()
-        
-        let set = [
-            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
-            Card(number: .two, shape: .diamond, shading: .solid, color: .green, id: "2"),
-            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
-        ]
-        
-        XCTAssertFalse(game.matchSet(for: set))
-    }
-    
-    func testMatchSetReturnsFalseForInvalidColorCombination() {
-        let game = SetCardGame()
-        
-        let set = [
-            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
-            Card(number: .two, shape: .diamond, shading: .open, color: .purple, id: "2"),
-            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
-        ]
-        
-        XCTAssertFalse(game.matchSet(for: set))
+        XCTAssertThrowsError(try game.matchSet(for: set))
     }
 }

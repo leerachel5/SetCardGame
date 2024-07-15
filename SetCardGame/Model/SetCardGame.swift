@@ -60,8 +60,12 @@ struct SetCardGame {
         return nil
     }
     
-    func matchSet(for selectedCards: Array<Card>) -> Bool {
+    func matchSet(for selectedCards: Array<Card>) throws -> Bool {
         // For each feature, the selected cards must display that feature as all the same or all different
+        
+        guard faceUpCards.contains(selectedCards) else {
+            throw CardSelectionError.selectedCardNotFaceUp
+        }
         
         let numbers = selectedCards.map { $0.number }
         let shape = selectedCards.map { $0.shape }
@@ -76,3 +80,11 @@ struct SetCardGame {
         return true
     }
 }
+
+#if DEBUG
+extension SetCardGame {
+    mutating func setFaceUpCards(to cards: Array<Card>) {
+        faceUpCards = cards
+    }
+}
+#endif
