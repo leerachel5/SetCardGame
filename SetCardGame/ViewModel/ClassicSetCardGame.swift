@@ -1,5 +1,5 @@
 //
-//  SetCardGameViewModel.swift
+//  ClassicSetCardGame.swift
 //  SetCardGame
 //
 //  Created by Rachel Lee on 7/13/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SetCardGameViewModel: ObservableObject {
+class ClassicSetCardGame: ObservableObject {
     @Published private var game: SetCardGame
     @Published private(set) var score: Int
     

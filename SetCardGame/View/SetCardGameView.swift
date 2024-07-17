@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SetCardGameView: View {
-    @ObservedObject var setGame = SetCardGameViewModel()
+    @ObservedObject var setGame = ClassicSetCardGame()
     
     var body: some View {
         Text("Score: \(setGame.score)")

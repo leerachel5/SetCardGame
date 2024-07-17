@@ -16,7 +16,7 @@
 		EB74D92A2C436C2E00FBA58A /* Squiggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9292C436C2E00FBA58A /* Squiggle.swift */; };
 		EB74D92F2C437E2A00FBA58A /* Oval.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D92E2C437E2A00FBA58A /* Oval.swift */; };
 		EB74D9352C439D3D00FBA58A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9342C439D3D00FBA58A /* Card.swift */; };
-		EB74D93A2C43AE9000FBA58A /* SetCardGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9392C43AE9000FBA58A /* SetCardGameViewModel.swift */; };
+		EB74D93A2C43AE9000FBA58A /* ClassicSetCardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9392C43AE9000FBA58A /* ClassicSetCardGame.swift */; };
 		EB74D93C2C43AEAB00FBA58A /* SetCardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */; };
 		EB74D9442C43B78900FBA58A /* SetCardGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */; };
 		EB74D9502C447A2A00FBA58A /* AnyInsettableShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D94F2C447A2A00FBA58A /* AnyInsettableShape.swift */; };
@@ -46,7 +46,7 @@
 		EB74D9292C436C2E00FBA58A /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
 		EB74D92E2C437E2A00FBA58A /* Oval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oval.swift; sourceTree = "<group>"; };
 		EB74D9342C439D3D00FBA58A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		EB74D9392C43AE9000FBA58A /* SetCardGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameViewModel.swift; sourceTree = "<group>"; };
+		EB74D9392C43AE9000FBA58A /* ClassicSetCardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicSetCardGame.swift; sourceTree = "<group>"; };
 		EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGame.swift; sourceTree = "<group>"; };
 		EB74D9412C43B78800FBA58A /* SetCardGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SetCardGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameTests.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		EB74D9192C434B6A00FBA58A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EB74D9392C43AE9000FBA58A /* SetCardGameViewModel.swift */,
+				EB74D9392C43AE9000FBA58A /* ClassicSetCardGame.swift */,
 				EB74D9552C44908700FBA58A /* CardUI.swift */,
 			);
 			path = ViewModel;
@@ -295,7 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB74D92A2C436C2E00FBA58A /* Squiggle.swift in Sources */,
-				EB74D93A2C43AE9000FBA58A /* SetCardGameViewModel.swift in Sources */,
+				EB74D93A2C43AE9000FBA58A /* ClassicSetCardGame.swift in Sources */,
 				EB74D9352C439D3D00FBA58A /* Card.swift in Sources */,
 				EB74D93C2C43AEAB00FBA58A /* SetCardGame.swift in Sources */,
 				EB74D90C2C4342B300FBA58A /* SetCardGameView.swift in Sources */,
