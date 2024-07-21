@@ -23,6 +23,7 @@
 		EB74D9562C44908700FBA58A /* CardUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9552C44908700FBA58A /* CardUI.swift */; };
 		EB74D95B2C449D2400FBA58A /* CardSelectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D95A2C449D2400FBA58A /* CardSelectionError.swift */; };
 		EB74D9672C450BB800FBA58A /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9662C450BB800FBA58A /* Collection+Extensions.swift */; };
+		EB8CE1542C4DB8BA00690E75 /* MatchingSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8CE1532C4DB8BA00690E75 /* MatchingSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		EB74D9552C44908700FBA58A /* CardUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardUI.swift; sourceTree = "<group>"; };
 		EB74D95A2C449D2400FBA58A /* CardSelectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectionError.swift; sourceTree = "<group>"; };
 		EB74D9662C450BB800FBA58A /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
+		EB8CE1532C4DB8BA00690E75 /* MatchingSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				EB74D95D2C449DA400FBA58A /* Errors */,
 				EB74D9342C439D3D00FBA58A /* Card.swift */,
 				EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */,
+				EB8CE1532C4DB8BA00690E75 /* MatchingSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				EB74D9562C44908700FBA58A /* CardUI.swift in Sources */,
 				EB74D95B2C449D2400FBA58A /* CardSelectionError.swift in Sources */,
 				EB74D9212C43522D00FBA58A /* Diamond.swift in Sources */,
+				EB8CE1542C4DB8BA00690E75 /* MatchingSet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,11 +11,14 @@ class ClassicSetCardGame: ObservableObject {
     @Published private var game: SetCardGame
     @Published private(set) var score: Int
     
-    @Published private var selectedCards = Set<Card>()
+    @Published private var selectedCards: MatchingSet
     
     init() {
         game = SetCardGame(numberOfStartingCards: 12)
         score = 0
+        
+        selectedCards = MatchingSet()
+
     }
     
     var deck: Array<Card> {
@@ -28,10 +31,14 @@ class ClassicSetCardGame: ObservableObject {
     
     func select(card: Card) {
         if selectedCards.contains(card) {
-            selectedCards.remove(card)
+            // Deselect card
+            if let selectedCard = selectedCards.firstIndex(of: card) {
+                let _ = selectedCards.remove(at: selectedCard)
+            }
         } else {
+            // Select card
             if selectedCards.count < 3 {
-                selectedCards.insert(card)
+                selectedCards.append(card)
             }
         }
     }

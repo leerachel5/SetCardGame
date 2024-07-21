@@ -51,7 +51,7 @@ struct SetCardGame {
         }
     }
     
-    mutating private func removeCardsFromFaceUpPile<C: Collection>(_ cards: C) where C.Element == Card {
+    mutating private func removeCardsFromFaceUpPile<C: Sequence>(_ cards: C) where C.Element == Card {
         for card in faceUpCards {
             if cards.contains(card) {
                 faceUpCards.remove(at: faceUpCards.firstIndex(of: card)!)
@@ -59,29 +59,20 @@ struct SetCardGame {
         }
     }
     
-    mutating func matchSet<C: Collection>(for selectedCards: C) throws -> Bool where C.Element == Card  {
-        // For each feature, the selected cards must display that feature as all the same or all different
+    mutating func matchSet(for matchingSet: MatchingSet) throws -> Bool {
         
-        guard selectedCards.count == 3 else {
+        guard matchingSet.count == 3 else {
             throw CardSelectionError.invalidNumberOfCardsInSet
         }
         
-        let faceUpPileContainsSelectedCards = faceUpCards.containsAllElements(in: selectedCards)
+        let faceUpPileContainsSelectedCards = faceUpCards.containsAllElements(in: matchingSet)
         guard faceUpPileContainsSelectedCards else {
             throw CardSelectionError.selectedCardNotFaceUp
         }
         
-        let numbers = selectedCards.map { $0.number }
-        let shape = selectedCards.map { $0.shape }
-        let shading = selectedCards.map { $0.shading }
-        let color = selectedCards.map { $0.color }
+        guard matchingSet.isMatchingSet else { return false }
         
-        guard numbers.allTheSame() || numbers.allDifferent() else { return false }
-        guard shape.allTheSame() || shape.allDifferent() else { return false }
-        guard shading.allTheSame() || shading.allDifferent() else { return false }
-        guard color.allTheSame() || color.allDifferent() else { return false }
-        
-        removeCardsFromFaceUpPile(selectedCards)
+        removeCardsFromFaceUpPile(matchingSet)
         
         let numberOfCardsToDraw = 12 - faceUpCards.count
         if numberOfCardsToDraw > 0 {
@@ -94,7 +85,7 @@ struct SetCardGame {
 
 #if DEBUG
 extension SetCardGame {
-    mutating func setFaceUpCards<C: Collection>(to cards: C) where C.Element == Card {
+    mutating func setFaceUpCards<C: Sequence>(to cards: C) where C.Element == Card {
         faceUpCards = Array(cards)
     }
 }
