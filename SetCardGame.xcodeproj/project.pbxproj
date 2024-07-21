@@ -120,8 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				EB74D95D2C449DA400FBA58A /* Errors */,
-				EB74D9342C439D3D00FBA58A /* Card.swift */,
 				EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */,
+				EB74D9342C439D3D00FBA58A /* Card.swift */,
 				EB8CE1532C4DB8BA00690E75 /* MatchingSet.swift */,
 			);
 			path = Model;

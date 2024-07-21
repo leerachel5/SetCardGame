@@ -8,22 +8,30 @@
 import Foundation
 
 struct MatchingSet {
-    private var numberOfCardsInSet = 3
+    // MARK: - Static Properties
+    private static let completeSetCount = 3
     
-    @CardLimit(maxCount: 3)
-    private var cards: Array<Card> = []
-    
-    init() {}
-    
-    init?<C: Sequence>(_ cards: C, numberOfCardsInSet: Int) where C.Element == Card {
-        self._cards = CardLimit(wrappedValue: Array(cards), maxCount: numberOfCardsInSet)
-        
-        self.numberOfCardsInSet = numberOfCardsInSet
+    // MARK: - Instance Properties
+    private var cards: Array<Card> {
+        // Ensure the count of the cards in this set never goes above the completeSetCount
+        didSet {
+            if cards.count > MatchingSet.completeSetCount {
+                cards = Array(cards.prefix(MatchingSet.completeSetCount))
+            }
+        }
     }
     
+    // MARK: - Initializers
+    init() {
+        self.cards = []
+    }
+    
+    init<C: Sequence>(_ cards: C) where C.Element == Card {
+        self.cards = Array(cards)
+    }
+    
+    // MARK: - Computed Properties and Getter Methods
     var isMatchingSet: Bool {
-        guard cards.count == self.numberOfCardsInSet else { return false }
-        
         let numbers = cards.map { $0.number }
         let shape = cards.map { $0.shape }
         let shading = cards.map { $0.shading }
@@ -38,6 +46,7 @@ struct MatchingSet {
     }
 }
 
+// MARK: - Extension: RangeReplaceableCollection
 extension MatchingSet: RangeReplaceableCollection {
     typealias Element = Card
     typealias Index = Array<Card>.Index
@@ -83,22 +92,3 @@ extension MatchingSet: RangeReplaceableCollection {
     }
 }
 
-
-@propertyWrapper
-struct CardLimit {
-    private var cards: [Card] = []
-    private let maxCount: Int
-    
-    var wrappedValue: [Card] {
-        get { cards }
-        set {
-            assert(newValue.count <= maxCount)
-            cards = newValue
-        }
-    }
-    
-    init(wrappedValue: [Card], maxCount: Int) {
-        self.maxCount = maxCount
-        self.wrappedValue = wrappedValue
-    }
-}
