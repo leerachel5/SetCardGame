@@ -9,7 +9,7 @@ import Foundation
 
 struct MatchingSet {
     // MARK: - Static Properties
-    private static let completeSetCount = 3
+    public static let completeSetCount = 3
     
     // MARK: - Instance Properties
     private var cards: Array<Card> {
@@ -31,7 +31,7 @@ struct MatchingSet {
     }
     
     // MARK: - Computed Properties and Getter Methods
-    var isMatchingSet: Bool {
+    public var isMatchingSet: Bool {
         let numbers = cards.map { $0.number }
         let shape = cards.map { $0.shape }
         let shading = cards.map { $0.shading }

@@ -59,27 +59,35 @@ struct SetCardGame {
         }
     }
     
-    mutating func matchSet(for matchingSet: MatchingSet) throws -> Bool {
-        
-        guard matchingSet.count == 3 else {
-            throw CardSelectionError.invalidNumberOfCardsInSet
-        }
-        
-        let faceUpPileContainsSelectedCards = faceUpCards.containsAllElements(in: matchingSet)
-        guard faceUpPileContainsSelectedCards else {
-            throw CardSelectionError.selectedCardNotFaceUp
+    mutating func matchSet(for matchingSet: MatchingSet, completion: () -> Void) -> Bool {
+        do {
+            try validateMatchingSet()
+        } catch {
+            print(error.localizedDescription)
+            return false
         }
         
         guard matchingSet.isMatchingSet else { return false }
         
-        removeCardsFromFaceUpPile(matchingSet)
-        
-        let numberOfCardsToDraw = 12 - faceUpCards.count
-        if numberOfCardsToDraw > 0 {
-            drawFaceUpCards(count: numberOfCardsToDraw)
-        }
+        replaceMatchingSetWithNewFaceUpCards()
+        completion()
         
         return true
+        
+        func validateMatchingSet() throws {
+            guard matchingSet.count == MatchingSet.completeSetCount else {
+                throw CardSelectionError.invalidNumberOfCardsInSet
+            }
+            
+            guard faceUpCards.containsAllElements(in: matchingSet) else {
+                throw CardSelectionError.selectedCardNotFaceUp
+            }
+        }
+        
+        func replaceMatchingSetWithNewFaceUpCards() {
+            removeCardsFromFaceUpPile(matchingSet)
+            drawFaceUpCards(count: MatchingSet.completeSetCount)
+        }
     }
 }
 

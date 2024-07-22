@@ -52,19 +52,9 @@ class ClassicSetCardGame: ObservableObject {
     }
     
     func matchSet() -> Bool {
-        defer {
-            selectedCards.removeAll()
+        let matched = game.matchSet(for: selectedCards) {
+            score += 1
         }
-        
-        do {
-            let matched = try game.matchSet(for: selectedCards)
-            if matched {
-                score += 1
-            }
-            return matched
-        } catch {
-            print("Error matching with selected cards, \(error.localizedDescription)")
-        }
-        return false
+        return matched
     }
 }
