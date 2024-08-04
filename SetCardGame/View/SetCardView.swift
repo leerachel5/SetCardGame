@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct SetCardView: View {
-    // TODO: Make these feature types generic so that multiple ViewModels can use the same view
-    typealias Card = SetCardGame<ClassicSetCardGame.Number, ClassicSetCardGame.Shape, ClassicSetCardGame.Shading, ClassicSetCardGame.Color>.Card
+struct SetCardView<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.Shape, Shading: SetCardGameFeature.Shading, Color: SetCardGameFeature.Color>: View {
+    
+    typealias Card = SetCardGame<Number, Shape, Shading, Color>.Card
     
     let card: Card
     let isSelected: Bool
