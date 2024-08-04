@@ -20,11 +20,20 @@ extension Collection where Element: Equatable {
     func allTheSame() -> Bool {
         self.allSatisfy({ $0 == self.first })
     }
-}
-
-extension Collection where Iterator.Element: Hashable {
+    
     func allDifferent() -> Bool {
-        return self.count == Set(self).count
+        guard self.count > 1 else {
+            return true
+        }
+        for (i, element) in self.enumerated() {
+            for j in (i + 1)..<self.count {
+                if element == self[self.index(self.startIndex, offsetBy: j)] {
+                    return false
+                }
+            }
+        }
+        return true
     }
+
 }
 

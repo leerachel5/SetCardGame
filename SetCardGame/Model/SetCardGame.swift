@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SetCardGame {
+struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.Shape, Shading: SetCardGameFeature.Shading, Color: SetCardGameFeature.Color> {
     private(set) var deck: Array<Card>!
     private(set) var faceUpCards: Array<Card> = []
     
@@ -23,10 +23,10 @@ struct SetCardGame {
     private static func createDeck() -> Array<Card> {
         var cards: Array<Card> = []
         var id = 0
-        for number in Card.Number.allCases {
-            for shape in Card.Shape.allCases {
-                for shading in Card.Shading.allCases {
-                    for color in Card.Color.allCases {
+        for number in Number.allCases {
+            for shape in Shape.allCases {
+                for shading in Shading.allCases {
+                    for color in Color.allCases {
                         cards.append(Card(
                             number: number,
                             shape: shape,
@@ -59,7 +59,7 @@ struct SetCardGame {
         }
     }
     
-    mutating func matchSet(for matchingSet: MatchingSet, completion: () -> Void) -> Bool {
+    mutating func matchSet(for matchingSet: MatchingSet, completion: (() -> Void)? = nil) -> Bool {
         do {
             try validateMatchingSet()
         } catch {
@@ -70,12 +70,15 @@ struct SetCardGame {
         guard matchingSet.isMatchingSet else { return false }
         
         replaceMatchingSetWithNewFaceUpCards()
-        completion()
+        
+        if let strongCompletion = completion {
+            strongCompletion()
+        }
         
         return true
         
         func validateMatchingSet() throws {
-            guard matchingSet.count == MatchingSet.completeSetCount else {
+            guard matchingSet.count == matchingSet.completeSetCount else {
                 throw CardSelectionError.invalidNumberOfCardsInSet
             }
             
@@ -86,7 +89,7 @@ struct SetCardGame {
         
         func replaceMatchingSetWithNewFaceUpCards() {
             removeCardsFromFaceUpPile(matchingSet)
-            drawFaceUpCards(count: MatchingSet.completeSetCount)
+            drawFaceUpCards(count: matchingSet.completeSetCount)
         }
     }
 }

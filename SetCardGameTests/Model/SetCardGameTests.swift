@@ -9,102 +9,92 @@
 import XCTest
 
 final class SetCardGameTests: XCTestCase {
+    typealias Sut = SetCardGame<ClassicSetCardGame.Number, ClassicSetCardGame.Shape, ClassicSetCardGame.Shading, ClassicSetCardGame.Color>
+    typealias Card = Sut.Card
+    
+    private var sut: Sut!
+    
+    override func setUp() {
+        sut = .init()
+    }
     
     func testInitializationGenerates81Cards() {
-        let game = SetCardGame()
-        
-        XCTAssertEqual(game.deck.count, 81)
+        XCTAssertEqual(sut.deck.count, 81)
     }
     
     func testInitializationGeneratesUniqueCardIds() {
         var seenIds = Dictionary<String, Bool>()
         
-        let game = SetCardGame()
-        
-        for card in game.deck {
+        for card in sut.deck {
             XCTAssertFalse(seenIds.keys.contains(card.id))
             seenIds[card.id] = true
         }
     }
     
     func testDrawnFaceUpCardsAreRemovedFromDeck() {
-        var game = SetCardGame()
-        
-        let initialDeckCount = game.deck.count
+        let initialDeckCount = sut.deck.count
         let numberOfCardsToDraw = 12
-        game.drawFaceUpCards(count: numberOfCardsToDraw)
+        sut.drawFaceUpCards(count: numberOfCardsToDraw)
         
-        XCTAssertEqual(game.deck.count, initialDeckCount - numberOfCardsToDraw)
+        XCTAssertEqual(sut.deck.count, initialDeckCount - numberOfCardsToDraw)
     }
     
     func testDrawnFaceUpCardsAreAppendedToFaceUpCards() {
-        var game = SetCardGame()
-        
         let numberOfCardsToDraw = 12
-        game.drawFaceUpCards(count: numberOfCardsToDraw)
+        sut.drawFaceUpCards(count: numberOfCardsToDraw)
         
-        XCTAssertEqual(game.faceUpCards.count, numberOfCardsToDraw)
+        XCTAssertEqual(sut.faceUpCards.count, numberOfCardsToDraw)
     }
     
     func testMatchSetFor3AllSameFeaturesAnd1AllDifferentFeature() {
-        var game = SetCardGame()
-        
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
             Card(number: .one, shape: .oval, shading: .solid, color: .green, id: "2"),
             Card(number: .one, shape: .oval, shading: .solid, color: .red, id: "3"),
         ]
         
-        game.setFaceUpCards(to: set)
+        sut.setFaceUpCards(to: set)
         
-        XCTAssertTrue((try? game.matchSet(for: set)) ?? false)
+        XCTAssertTrue(sut.matchSet(for: Sut.MatchingSet(set)))
     }
     
     func testMatchSetFor2AllSameFeaturesAnd2AllDifferentFeatures() {
-        var game = SetCardGame()
-        
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
             Card(number: .one, shape: .oval, shading: .open, color: .green, id: "2"),
             Card(number: .one, shape: .oval, shading: .striped, color: .red, id: "3"),
         ]
         
-        game.setFaceUpCards(to: set)
+        sut.setFaceUpCards(to: set)
         
-        XCTAssertTrue((try? game.matchSet(for: set)) ?? false)
+        XCTAssertTrue(sut.matchSet(for: Sut.MatchingSet(set)))
     }
     
     func testMatchSetFor1AllSameFeatureAnd3AllDifferentFeatures() {
-        var game = SetCardGame()
-        
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
             Card(number: .one, shape: .diamond, shading: .open, color: .green, id: "2"),
             Card(number: .one, shape: .squiggle, shading: .striped, color: .red, id: "3"),
         ]
         
-        game.setFaceUpCards(to: set)
+        sut.setFaceUpCards(to: set)
         
-        XCTAssertTrue((try? game.matchSet(for: set)) ?? false)
+        XCTAssertTrue(sut.matchSet(for: Sut.MatchingSet(set)))
     }
     
     func testMatchSetFor4AllDifferentFeatures() {
-        var game = SetCardGame()
-        
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
             Card(number: .two, shape: .diamond, shading: .open, color: .green, id: "2"),
             Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
         ]
         
-        game.setFaceUpCards(to: set)
+        sut.setFaceUpCards(to: set)
         
-        XCTAssertTrue((try? game.matchSet(for: set)) ?? false)
+        XCTAssertTrue(sut.matchSet(for: Sut.MatchingSet(set)))
     }
     
     func testMatchSetRemovesOnlyMatchedCardsFromFaceUpPile() {
-        var game = SetCardGame()
-        
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
             Card(number: .two, shape: .diamond, shading: .open, color: .green, id: "3"),
@@ -118,106 +108,59 @@ final class SetCardGameTests: XCTestCase {
         
         let faceUpCards = set + extraFaceUpCards
         
-        game.setFaceUpCards(to: faceUpCards)
+        sut.setFaceUpCards(to: faceUpCards)
         
-        let _ = try! game.matchSet(for: set)
+        let _ = sut.matchSet(for: Sut.MatchingSet(set))
         
-        print(game.faceUpCards)
-        print(extraFaceUpCards)
-        
-        XCTAssertFalse(game.faceUpCards.containsAllElements(in: set))
-        XCTAssertTrue(game.faceUpCards.containsAllElements(in: extraFaceUpCards))
+        XCTAssertFalse(sut.faceUpCards.containsAllElements(in: set))
+        XCTAssertTrue(sut.faceUpCards.containsAllElements(in: extraFaceUpCards))
     }
     
     func testMatchSetReturnsFalseForInvalidNumberCombination() {
-        var game = SetCardGame()
-        
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
             Card(number: .one, shape: .diamond, shading: .open, color: .green, id: "2"),
             Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
         ]
         
-        game.setFaceUpCards(to: set)
+        sut.setFaceUpCards(to: set)
         
-        XCTAssertFalse((try? game.matchSet(for: set)) ?? false)
+        XCTAssertFalse(sut.matchSet(for: Sut.MatchingSet(set)))
     }
     
     func testMatchSetReturnsFalseForInvalidShapeCombination() {
-        var game = SetCardGame()
-        
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
             Card(number: .two, shape: .oval, shading: .open, color: .green, id: "2"),
             Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
         ]
         
-        game.setFaceUpCards(to: set)
+        sut.setFaceUpCards(to: set)
         
-        XCTAssertFalse((try? game.matchSet(for: set)) ?? false)
+        XCTAssertFalse(sut.matchSet(for: Sut.MatchingSet(set)))
     }
     
     func testMatchSetReturnsFalseForInvalidShadingCombination() {
-        var game = SetCardGame()
-        
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
             Card(number: .two, shape: .diamond, shading: .solid, color: .green, id: "2"),
             Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
         ]
         
-        game.setFaceUpCards(to: set)
+        sut.setFaceUpCards(to: set)
         
-        XCTAssertFalse((try? game.matchSet(for: set)) ?? false)
+        XCTAssertFalse(sut.matchSet(for: Sut.MatchingSet(set)))
     }
     
     func testMatchSetReturnsFalseForInvalidColorCombination() {
-        var game = SetCardGame()
-        
         let set = [
             Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
             Card(number: .two, shape: .diamond, shading: .open, color: .purple, id: "2"),
             Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
         ]
         
-        game.setFaceUpCards(to: set)
+        sut.setFaceUpCards(to: set)
         
-        XCTAssertFalse((try? game.matchSet(for: set)) ?? false)
-    }
-    
-    func testMatchSetWithLessThan3CardsThrowsError() {
-        var game = SetCardGame()
-        
-        let set = [
-            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
-            Card(number: .two, shape: .diamond, shading: .open, color: .green, id: "2"),
-        ]
-        
-        XCTAssertThrowsError(try game.matchSet(for: set))
-    }
-    
-    func testMatchSetWithMoreThan3CardsThrowsError() {
-        var game = SetCardGame()
-        
-        let set = [
-            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
-            Card(number: .two, shape: .diamond, shading: .open, color: .green, id: "2"),
-            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
-            Card(number: .three, shape: .squiggle, shading: .striped, color: .green, id: "4"),
-        ]
-        
-        XCTAssertThrowsError(try game.matchSet(for: set))
-    }
-    
-    func testMatchSetWithNonFaceUpCardsThrowsError() {
-        var game = SetCardGame()
-        
-        let set = [
-            Card(number: .one, shape: .oval, shading: .solid, color: .purple, id: "1"),
-            Card(number: .two, shape: .diamond, shading: .open, color: .green, id: "2"),
-            Card(number: .three, shape: .squiggle, shading: .striped, color: .red, id: "3"),
-        ]
-        
-        XCTAssertThrowsError(try game.matchSet(for: set))
+        XCTAssertFalse(sut.matchSet(for: Sut.MatchingSet(set)))
     }
 }

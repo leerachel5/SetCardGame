@@ -8,10 +8,14 @@
 import Foundation
 
 class ClassicSetCardGame: ObservableObject {
-    @Published private var game: SetCardGame
+    typealias GameModel = SetCardGame<Number, Shape, Shading, Color>
+    typealias MatchingSet = GameModel.MatchingSet
+    typealias Card = GameModel.Card
+    
+    @Published private var game: GameModel
     @Published private(set) var score: Int
     
-    @Published private var selectedCards: MatchingSet
+    @Published private var selectedCards: GameModel.MatchingSet
     
     init() {
         game = SetCardGame(numberOfStartingCards: 12)
@@ -53,7 +57,7 @@ class ClassicSetCardGame: ObservableObject {
     
     func matchSet() -> Bool {
         let matched = game.matchSet(for: selectedCards) {
-            score += 1
+            self.score += 1
         }
         return matched
     }
