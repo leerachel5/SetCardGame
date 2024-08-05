@@ -38,15 +38,16 @@ class ClassicSetCardGame: ObservableObject {
 
 extension SetCardGame.Card {
     var borderColor: SwiftUI.Color {
-        switch state {
-        case .unselected:
+        if !selected {
             return .black
-        case .selected:
-            return .yellow
-        case .successfulMatch:
-            return .green
-        case .unsuccessfulMatch:
-            return .red
+        } else {
+            if matched == true {
+                return .green
+            } else if matched == false {
+                return .red
+            } else {
+                return .yellow
+            }
         }
     }
 }

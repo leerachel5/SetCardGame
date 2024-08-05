@@ -37,7 +37,6 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
                             shape: shape,
                             shading: shading,
                             color: color,
-                            state: .unselected,
                             partition: .inDeck,
                             id: String(id))
                         )
@@ -80,31 +79,30 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     mutating func select(_ card: Card) {
         guard card.partition == .faceUp else { return }
         
-        guard let chosenIndex = cards[card.partition]!.firstIndex(where: { $0.id == card.id }) else { return }
-        
-        var selectedCards = cards[card.partition]!.filter({ $0.state == .selected })
-        
+        var selectedCards = cards[card.partition]!.filter({ $0.selected })
         if selectedCards.count == 3 {
             for card in selectedCards {
-                if card.state == .successfulMatch {
+                if card.matched == true {
                     moveCard(card, to: .discarded)
-                } else if card.state == .unsuccessfulMatch {
+                } else if card.matched == false {
                     if let cardIndex = cards[card.partition]!.firstIndex(where: { $0.id == card.id }) {
-                        cards[card.partition]![cardIndex].state = .unselected
+                        cards[card.partition]![cardIndex].matched = nil
+                        cards[card.partition]![cardIndex].selected = false
                     }
                 }
             }
         }
         
-        cards[card.partition]![chosenIndex].state = .selected
+        guard let chosenIndex = cards[card.partition]!.firstIndex(where: { $0.id == card.id }) else { return }
+        cards[card.partition]![chosenIndex].selected.toggle()
         
-        selectedCards = cards[card.partition]!.filter({ $0.state == .selected })
+        selectedCards = cards[card.partition]!.filter({ $0.selected })
         
         if selectedCards.count == 3 {
             let matched = match(cards: selectedCards)
             for card in selectedCards {
                 if let selectedCardIndex = cards[card.partition]!.firstIndex(where: { $0.id == card.id }) {
-                    cards[card.partition]![selectedCardIndex].state = matched ? .successfulMatch : .unsuccessfulMatch
+                    cards[card.partition]![selectedCardIndex].matched = matched
                 }
             }
         }
@@ -139,11 +137,5 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
                       (colors.allTheSame() || colors.allDifferent())
         
         return matched
-    }
-    
-    mutating private func apply(to card: Card, _ function: (inout Card) -> Void) {
-        if let index = cards[card.partition]!.firstIndex(of: card) {
-            function(&(cards[card.partition]![index]))
-        }
     }
 }

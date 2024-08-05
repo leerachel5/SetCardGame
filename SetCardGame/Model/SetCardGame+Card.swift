@@ -14,17 +14,11 @@ extension SetCardGame {
         let shading: Shading
         let color: Color
         
-        var state: State = .unselected
+        var selected: Bool = false
+        var matched: Bool? = nil
         var partition: Partition
         
         var id: String // Unique identifier
-        
-        enum State: CaseIterable {
-            case unselected
-            case selected
-            case successfulMatch
-            case unsuccessfulMatch
-        }
         
         enum Partition: CaseIterable {
             case discarded

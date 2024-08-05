@@ -52,7 +52,6 @@ struct SetCardView<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
                 shape: ClassicSetCardGame.Shape.diamond,
                 shading: ClassicSetCardGame.Shading.solid,
                 color: ClassicSetCardGame.Color.purple,
-                state: .unselected,
                 partition: .faceUp,
                 id: "1"
             )
@@ -62,7 +61,6 @@ struct SetCardView<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
                 shape: ClassicSetCardGame.Shape.oval,
                 shading: ClassicSetCardGame.Shading.open,
                 color: ClassicSetCardGame.Color.green,
-                state: .selected,
                 partition: .faceUp,
                 id: "2"
             )
@@ -72,7 +70,6 @@ struct SetCardView<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
                 shape: ClassicSetCardGame.Shape.squiggle,
                 shading: ClassicSetCardGame.Shading.striped,
                 color: ClassicSetCardGame.Color.red,
-                state: .successfulMatch,
                 partition: .faceUp,
                 id: "3"
             )
