@@ -9,23 +9,23 @@ import Foundation
 
 struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.Shape, Shading: SetCardGameFeature.Shading, Color: SetCardGameFeature.Color> {
     // MARK: Typealiases
-    typealias Deck = Dictionary<Card.Partition, Array<Card>>
+    typealias PartitionedCards = Dictionary<Card.Partition, Array<Card>>
     
     // MARK: Instance properties
-    private var deck: Deck!
+    private var cards: PartitionedCards!
     
     // MARK: Initialization
     init() {
-        deck = createDeck()
+        cards = createCards()
     }
     
     init(numberOfStartingCards: Int) {
-        deck = createDeck()
+        cards = createCards()
         draw(count: numberOfStartingCards)
     }
     
-    private func createDeck() -> Deck {
-        var deck = createEmptyStatePartitionedDeck()
+    private func createCards() -> PartitionedCards {
+        var deck = createEmptyStatePartitionedCards()
         
         var id = 0
         for number in Number.allCases {
@@ -49,8 +49,8 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
         return deck
     }
     
-    private func createEmptyStatePartitionedDeck() -> Deck {
-        var deck: Deck = [:]
+    private func createEmptyStatePartitionedCards() -> PartitionedCards {
+        var deck: PartitionedCards = [:]
         for partition in Card.Partition.allCases {
             deck[partition] = Array<Card>()
         }
@@ -67,7 +67,7 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     }
     
     func getPartition(for partition: Card.Partition) -> Array<Card> {
-        return deck[partition]!
+        return cards[partition]!
     }
     
     // MARK: Mutating Methods
@@ -80,31 +80,31 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     mutating func select(_ card: Card) {
         guard card.partition == .faceUp else { return }
         
-        guard let chosenIndex = deck[card.partition]!.firstIndex(where: { $0.id == card.id }) else { return }
+        guard let chosenIndex = cards[card.partition]!.firstIndex(where: { $0.id == card.id }) else { return }
         
-        var selectedCards = deck[card.partition]!.filter({ $0.state == .selected })
+        var selectedCards = cards[card.partition]!.filter({ $0.state == .selected })
         
         if selectedCards.count == 3 {
             for card in selectedCards {
                 if card.state == .successfulMatch {
                     moveCard(card, to: .discarded)
                 } else if card.state == .unsuccessfulMatch {
-                    if let cardIndex = deck[card.partition]!.firstIndex(where: { $0.id == card.id }) {
-                        deck[card.partition]![cardIndex].state = .unselected
+                    if let cardIndex = cards[card.partition]!.firstIndex(where: { $0.id == card.id }) {
+                        cards[card.partition]![cardIndex].state = .unselected
                     }
                 }
             }
         }
         
-        deck[card.partition]![chosenIndex].state = .selected
+        cards[card.partition]![chosenIndex].state = .selected
         
-        selectedCards = deck[card.partition]!.filter({ $0.state == .selected })
+        selectedCards = cards[card.partition]!.filter({ $0.state == .selected })
         
         if selectedCards.count == 3 {
             let matched = match(cards: selectedCards)
             for card in selectedCards {
-                if let selectedCardIndex = deck[card.partition]!.firstIndex(where: { $0.id == card.id }) {
-                    deck[card.partition]![selectedCardIndex].state = matched ? .successfulMatch : .unsuccessfulMatch
+                if let selectedCardIndex = cards[card.partition]!.firstIndex(where: { $0.id == card.id }) {
+                    cards[card.partition]![selectedCardIndex].state = matched ? .successfulMatch : .unsuccessfulMatch
                 }
             }
         }
@@ -115,13 +115,13 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     }
     
     private mutating func moveCard(_ card: Card, to destination: Card.Partition) {
-        guard var cardToMove = deck[card.partition]?.remove(card) else { return }
+        guard var cardToMove = cards[card.partition]?.remove(card) else { return }
         cardToMove.partition = destination
-        deck[destination]?.append(cardToMove)
+        cards[destination]?.append(cardToMove)
     }
     
     private mutating func moveRandomCard(from origin: Card.Partition, to destination: Card.Partition) {
-        guard let cardToMove = deck[origin]?.randomElement() else { return }
+        guard let cardToMove = cards[origin]?.randomElement() else { return }
         moveCard(cardToMove, to: destination)
     }
     
@@ -142,8 +142,8 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     }
     
     mutating private func apply(to card: Card, _ function: (inout Card) -> Void) {
-        if let index = deck[card.partition]!.firstIndex(of: card) {
-            function(&(deck[card.partition]![index]))
+        if let index = cards[card.partition]!.firstIndex(of: card) {
+            function(&(cards[card.partition]![index]))
         }
     }
 }
