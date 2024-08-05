@@ -23,7 +23,7 @@ extension SetCardGame {
         enum Partition: CaseIterable {
             case discarded
             case faceUp
-            case inDeck
+            case deck
         }
         
         func hash(into hasher: inout Hasher) {

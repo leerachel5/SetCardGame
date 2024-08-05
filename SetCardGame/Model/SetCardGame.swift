@@ -32,12 +32,12 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
             for shape in Shape.allCases {
                 for shading in Shading.allCases {
                     for color in Color.allCases {
-                        deck[.inDeck]!.append(Card(
+                        deck[.deck]!.append(Card(
                             number: number,
                             shape: shape,
                             shading: shading,
                             color: color,
-                            partition: .inDeck,
+                            partition: .deck,
                             id: String(id))
                         )
                         id += 1
@@ -57,14 +57,6 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     }
     
     // MARK: Getter Methods and Computed Properties
-    func getDeck() -> Array<Card> {
-        var wholeDeck = Array<Card>()
-        for partition in Card.Partition.allCases {
-            wholeDeck.append(contentsOf: getPartition(for: partition))
-        }
-        return wholeDeck
-    }
-    
     func getPartition(for partition: Card.Partition) -> Array<Card> {
         return cards[partition]!
     }
@@ -72,7 +64,7 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     // MARK: Mutating Methods
     mutating func draw(count: Int) {
         for _ in 0..<count {
-            moveRandomCard(from: .inDeck, to: .faceUp)
+            moveRandomCard(from: .deck, to: .faceUp)
         }
     }
     

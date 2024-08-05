@@ -20,10 +20,10 @@ class ClassicSetCardGame: ObservableObject {
     }
     
     var deck: Array<Card> {
-        game.getDeck()
+        game.getPartition(for: .deck)
     }
     
-    var faceUpCards: Array<Card> {
+    var faceUpPile: Array<Card> {
         game.getPartition(for: .faceUp)
     }
     
