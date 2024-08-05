@@ -14,14 +14,26 @@ extension SetCardGame {
         let shading: Shading
         let color: Color
         
+        var state: State = .unselected
+        var partition: Partition
+        
         var id: String // Unique identifier
+        
+        enum State: CaseIterable {
+            case unselected
+            case selected
+            case successfulMatch
+            case unsuccessfulMatch
+        }
+        
+        enum Partition: CaseIterable {
+            case discarded
+            case faceUp
+            case inDeck
+        }
         
         func hash(into hasher: inout Hasher) {
             hasher.combine(id)
-        }
-        
-        static func == (lhs: Card, rhs: Card) -> Bool {
-            return lhs.id == rhs.id
         }
         
         var debugDescription: String {

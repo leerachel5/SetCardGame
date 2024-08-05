@@ -11,12 +11,15 @@ struct SetCardView<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     
     typealias Card = SetCardGame<Number, Shape, Shading, Color>.Card
     
-    let card: Card
-    let isSelected: Bool
+    private let card: Card
+    
+    init(_ card: Card) {
+        self.card = card
+    }
     
     var body: some View {
         RoundedRectangle(cornerRadius: 16)
-            .strokeBorder(isSelected ? .yellow : .black)
+            .strokeBorder(card.borderColor)
             .foregroundStyle(.black)
             .overlay {
                 cardContent
@@ -44,29 +47,35 @@ struct SetCardView<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
 
 #Preview {
     VStack {
-        SetCardView(card: SetCardGame.Card(
+        SetCardView(SetCardGame.Card(
                 number: ClassicSetCardGame.Number.one,
                 shape: ClassicSetCardGame.Shape.diamond,
                 shading: ClassicSetCardGame.Shading.solid,
                 color: ClassicSetCardGame.Color.purple,
+                state: .unselected,
+                partition: .faceUp,
                 id: "1"
-            ), isSelected: false
+            )
         )
-        SetCardView(card: SetCardGame.Card(
+        SetCardView(SetCardGame.Card(
                 number: ClassicSetCardGame.Number.two,
                 shape: ClassicSetCardGame.Shape.oval,
                 shading: ClassicSetCardGame.Shading.open,
                 color: ClassicSetCardGame.Color.green,
+                state: .selected,
+                partition: .faceUp,
                 id: "2"
-            ), isSelected: true
+            )
         )
-        SetCardView(card: SetCardGame.Card(
+        SetCardView(SetCardGame.Card(
                 number: ClassicSetCardGame.Number.three,
                 shape: ClassicSetCardGame.Shape.squiggle,
                 shading: ClassicSetCardGame.Shading.striped,
                 color: ClassicSetCardGame.Color.red,
+                state: .successfulMatch,
+                partition: .faceUp,
                 id: "3"
-            ), isSelected: false
+            )
         )
     }
 }

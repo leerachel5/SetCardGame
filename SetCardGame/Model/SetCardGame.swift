@@ -8,30 +8,37 @@
 import Foundation
 
 struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.Shape, Shading: SetCardGameFeature.Shading, Color: SetCardGameFeature.Color> {
-    private(set) var deck: Array<Card>!
-    private(set) var faceUpCards: Array<Card> = []
+    // MARK: Typealiases
+    typealias Deck = Dictionary<Card.Partition, Array<Card>>
     
+    // MARK: Instance properties
+    private var deck: Deck!
+    
+    // MARK: Initialization
     init() {
-        deck = SetCardGame.createDeck()
+        deck = createDeck()
     }
     
     init(numberOfStartingCards: Int) {
-        deck = SetCardGame.createDeck()
-        drawFaceUpCards(count: numberOfStartingCards)
+        deck = createDeck()
+        draw(count: numberOfStartingCards)
     }
     
-    private static func createDeck() -> Array<Card> {
-        var cards: Array<Card> = []
+    private func createDeck() -> Deck {
+        var deck = createEmptyStatePartitionedDeck()
+        
         var id = 0
         for number in Number.allCases {
             for shape in Shape.allCases {
                 for shading in Shading.allCases {
                     for color in Color.allCases {
-                        cards.append(Card(
+                        deck[.inDeck]!.append(Card(
                             number: number,
                             shape: shape,
                             shading: shading,
                             color: color,
+                            state: .unselected,
+                            partition: .inDeck,
                             id: String(id))
                         )
                         id += 1
@@ -39,65 +46,104 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
                 }
             }
         }
-        return cards
+        return deck
     }
     
-    mutating func drawFaceUpCards(count: Int) {
-        for _ in 0..<min(deck.count, count) {
-            // Pops a random card from the deck and appends it to the faceup cards
-            if let randomCard = deck.indices.randomElement().map({ deck.remove(at: $0) }) {
-                faceUpCards.append(randomCard)
+    private func createEmptyStatePartitionedDeck() -> Deck {
+        var deck: Deck = [:]
+        for partition in Card.Partition.allCases {
+            deck[partition] = Array<Card>()
+        }
+        return deck
+    }
+    
+    // MARK: Getter Methods and Computed Properties
+    func getDeck() -> Array<Card> {
+        var wholeDeck = Array<Card>()
+        for partition in Card.Partition.allCases {
+            wholeDeck.append(contentsOf: getPartition(for: partition))
+        }
+        return wholeDeck
+    }
+    
+    func getPartition(for partition: Card.Partition) -> Array<Card> {
+        return deck[partition]!
+    }
+    
+    // MARK: Mutating Methods
+    mutating func draw(count: Int) {
+        for _ in 0..<count {
+            moveRandomCard(from: .inDeck, to: .faceUp)
+        }
+    }
+    
+    mutating func select(_ card: Card) {
+        guard card.partition == .faceUp else { return }
+        
+        guard let chosenIndex = deck[card.partition]!.firstIndex(where: { $0.id == card.id }) else { return }
+        
+        var selectedCards = deck[card.partition]!.filter({ $0.state == .selected })
+        
+        if selectedCards.count == 3 {
+            for card in selectedCards {
+                if card.state == .successfulMatch {
+                    moveCard(card, to: .discarded)
+                } else if card.state == .unsuccessfulMatch {
+                    if let cardIndex = deck[card.partition]!.firstIndex(where: { $0.id == card.id }) {
+                        deck[card.partition]![cardIndex].state = .unselected
+                    }
+                }
+            }
+        }
+        
+        deck[card.partition]![chosenIndex].state = .selected
+        
+        selectedCards = deck[card.partition]!.filter({ $0.state == .selected })
+        
+        if selectedCards.count == 3 {
+            let matched = match(cards: selectedCards)
+            for card in selectedCards {
+                if let selectedCardIndex = deck[card.partition]!.firstIndex(where: { $0.id == card.id }) {
+                    deck[card.partition]![selectedCardIndex].state = matched ? .successfulMatch : .unsuccessfulMatch
+                }
             }
         }
     }
     
-    mutating private func removeCardsFromFaceUpPile<C: Sequence>(_ cards: C) where C.Element == Card {
-        for card in faceUpCards {
-            if cards.contains(card) {
-                faceUpCards.remove(at: faceUpCards.firstIndex(of: card)!)
-            }
-        }
+    private mutating func discard(_ card: Card) {
+        moveCard(card, to: .discarded)
     }
     
-    mutating func matchSet(for matchingSet: MatchingSet, completion: (() -> Void)? = nil) -> Bool {
-        do {
-            try validateMatchingSet()
-        } catch {
-            print(error.localizedDescription)
-            return false
-        }
+    private mutating func moveCard(_ card: Card, to destination: Card.Partition) {
+        guard var cardToMove = deck[card.partition]?.remove(card) else { return }
+        cardToMove.partition = destination
+        deck[destination]?.append(cardToMove)
+    }
+    
+    private mutating func moveRandomCard(from origin: Card.Partition, to destination: Card.Partition) {
+        guard let cardToMove = deck[origin]?.randomElement() else { return }
+        moveCard(cardToMove, to: destination)
+    }
+    
+    mutating private func match<CardCollection: Collection<Card>>(cards: CardCollection) -> Bool {
+        guard cards.count == 3 else { return false }
         
-        guard matchingSet.isMatchingSet else { return false }
+        let numbers = cards.map({ $0.number })
+        let shapes = cards.map({ $0.shape })
+        let shadings = cards.map({ $0.shading })
+        let colors = cards.map({ $0.color })
         
-        replaceMatchingSetWithNewFaceUpCards()
+        let matched = (numbers.allTheSame() || numbers.allDifferent()) &&
+                      (shapes.allTheSame() || shapes.allDifferent()) &&
+                      (shadings.allTheSame() || shadings.allDifferent()) &&
+                      (colors.allTheSame() || colors.allDifferent())
         
-        if let strongCompletion = completion {
-            strongCompletion()
-        }
-        
-        return true
-        
-        func validateMatchingSet() throws {
-            guard matchingSet.count == matchingSet.completeSetCount else {
-                throw CardSelectionError.invalidNumberOfCardsInSet
-            }
-            
-            guard faceUpCards.containsAllElements(in: matchingSet) else {
-                throw CardSelectionError.selectedCardNotFaceUp
-            }
-        }
-        
-        func replaceMatchingSetWithNewFaceUpCards() {
-            removeCardsFromFaceUpPile(matchingSet)
-            drawFaceUpCards(count: matchingSet.completeSetCount)
+        return matched
+    }
+    
+    mutating private func apply(to card: Card, _ function: (inout Card) -> Void) {
+        if let index = deck[card.partition]!.firstIndex(of: card) {
+            function(&(deck[card.partition]![index]))
         }
     }
 }
-
-#if DEBUG
-extension SetCardGame {
-    mutating func setFaceUpCards<C: Sequence>(to cards: C) where C.Element == Card {
-        faceUpCards = Array(cards)
-    }
-}
-#endif
