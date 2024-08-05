@@ -11,7 +11,10 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     // MARK: Typealiases
     typealias PartitionedCards = Dictionary<Card.Partition, Array<Card>>
     
-    // MARK: Instance properties
+    // MARK: Static Properties
+    static var setCount: Int { 3 }
+    
+    // MARK: Instance Properties
     private var cards: PartitionedCards!
     
     // MARK: Initialization
@@ -65,8 +68,12 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
         return cards[.faceUp]!.filter({ $0.selected })
     }
     
+    private func getRandomCard(from partition: Card.Partition) -> Card? {
+        return cards[partition]?.randomElement()
+    }
+    
     private func match<CardCollection: Collection<Card>>(cards: CardCollection) -> Bool {
-        guard cards.count == 3 else { return false }
+        guard cards.count == Self.setCount else { return false }
         
         let numbers = cards.map({ $0.number })
         let shapes = cards.map({ $0.shape })
@@ -92,11 +99,11 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
         guard card.partition == .faceUp else { return }
         
         var selectedCards = getSelectedCards()
-        if selectedCards.count == 3 {
+        if selectedCards.count == Self.setCount {
             for selectedCard in selectedCards {
                 if selectedCard.matched == true {
                     if selectedCards.contains(card) { return }
-                    moveCard(selectedCard, to: .discarded)
+                    discard(selectedCard)
                 } else if selectedCard.matched == false {
                     if let cardIndex = cards[.faceUp]!.firstIndex(where: { $0.id == selectedCard.id }) {
                         cards[.faceUp]![cardIndex].matched = nil
@@ -111,7 +118,7 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
         
         selectedCards = getSelectedCards()
         
-        if selectedCards.count == 3 {
+        if selectedCards.count == Self.setCount {
             let matched = match(cards: selectedCards)
             for card in selectedCards {
                 if let selectedCardIndex = cards[.faceUp]!.firstIndex(where: { $0.id == card.id }) {
@@ -132,7 +139,8 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     }
     
     private mutating func moveRandomCard(from origin: Card.Partition, to destination: Card.Partition) {
-        guard let cardToMove = cards[origin]?.randomElement() else { return }
-        moveCard(cardToMove, to: destination)
+        if let randomCard = getRandomCard(from: origin) {
+            moveCard(randomCard, to: destination)
+        }
     }
 }
