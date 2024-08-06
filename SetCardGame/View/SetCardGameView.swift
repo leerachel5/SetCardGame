@@ -36,7 +36,7 @@ struct SetCardGameView: View {
     var actionButtons: some View {
         HStack {
             Button(action: {
-                setGame.drawCards()
+                setGame.draw()
             }, label: {
                 Text("Deal 3 More Cards")
             })

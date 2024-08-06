@@ -61,6 +61,14 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     }
     
     // MARK: Getter Methods and Computed Properties
+    var allCards: Array<Card> {
+        var allCards = Array<Card>()
+        for partition in Card.Partition.allCases {
+            allCards.append(contentsOf: cards[partition]!)
+        }
+        return allCards
+    }
+    
     func getPartition(for partition: Card.Partition) -> Array<Card> {
         return cards[partition]!
     }

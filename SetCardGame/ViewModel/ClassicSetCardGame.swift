@@ -27,6 +27,10 @@ class ClassicSetCardGame: ObservableObject {
         initializeNewGame()
     }
     
+    var allCards: Array<Card> {
+        game.allCards
+    }
+    
     var deck: Array<Card> {
         game.getPartition(for: .deck)
     }
@@ -39,7 +43,7 @@ class ClassicSetCardGame: ObservableObject {
         game.select(card)
     }
     
-    func drawCards() {
+    func draw() {
         game.draw()
     }
 }
