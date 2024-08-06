@@ -68,6 +68,10 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
         return cards[.faceUp]!.filter({ $0.selected })
     }
     
+    private func getIndex(of card: Card) -> Int? {
+        return cards[card.partition]!.firstIndex(where: { $0.id == card.id })
+    }
+    
     private func getRandomCard(from partition: Card.Partition) -> Card? {
         return cards[partition]?.randomElement()
     }
@@ -103,39 +107,63 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
             for selectedCard in selectedCards {
                 if selectedCard.matched == true {
                     if selectedCards.contains(card) { return }
-                    discard(selectedCard)
+                    if let newCard = getRandomCard(from: .deck) {
+                        replaceCard(selectedCard, with: newCard, moveTo: .discarded)
+                    } else {
+                        moveCard(selectedCard, to: .discarded)
+                    }
                 } else if selectedCard.matched == false {
-                    if let cardIndex = cards[.faceUp]!.firstIndex(where: { $0.id == selectedCard.id }) {
-                        cards[.faceUp]![cardIndex].matched = nil
-                        cards[.faceUp]![cardIndex].selected = false
+                    if let selectedCardIndex = getIndex(of: selectedCard) {
+                        cards[.faceUp]![selectedCardIndex].matched = nil
+                        cards[.faceUp]![selectedCardIndex].selected = false
                     }
                 }
             }
         }
         
-        guard let chosenIndex = cards[.faceUp]!.firstIndex(where: { $0.id == card.id }) else { return }
+        guard let chosenIndex = getIndex(of: card) else { return }
         cards[.faceUp]![chosenIndex].selected.toggle()
         
         selectedCards = getSelectedCards()
-        
         if selectedCards.count == Self.setCount {
             let matched = match(cards: selectedCards)
             for card in selectedCards {
-                if let selectedCardIndex = cards[.faceUp]!.firstIndex(where: { $0.id == card.id }) {
+                if let selectedCardIndex = getIndex(of: card) {
                     cards[.faceUp]![selectedCardIndex].matched = matched
                 }
             }
         }
     }
     
-    private mutating func discard(_ card: Card) {
-        moveCard(card, to: .discarded)
+    private mutating func addCard(_ card: Card, to destination: Card.Partition) {
+        cards[destination]?.append(card)
+    }
+    
+    private mutating func addCard(_ card: Card, to destination: Card.Partition, at index: Int) {
+        cards[destination]?.insert(card, at: index)
+    }
+    
+    private mutating func removeCard(_ card: Card) -> Card? {
+        return cards[card.partition]?.remove(card)
+    }
+    
+    private mutating func replaceCard(_ originalCard: Card, with newCard: Card, moveTo destination: Card.Partition) {
+        if let cardIndex = getIndex(of: originalCard) {
+            moveCard(newCard, to: originalCard.partition, at: cardIndex)
+            moveCard(originalCard, to: destination)
+        }
     }
     
     private mutating func moveCard(_ card: Card, to destination: Card.Partition) {
-        guard var cardToMove = cards[card.partition]?.remove(card) else { return }
+        guard var cardToMove = removeCard(card) else { return }
         cardToMove.partition = destination
-        cards[destination]?.append(cardToMove)
+        addCard(cardToMove, to: destination)
+    }
+    
+    private mutating func moveCard(_ card: Card, to destination: Card.Partition, at index: Int) {
+        guard var cardToMove = removeCard(card) else { return }
+        cardToMove.partition = destination
+        addCard(cardToMove, to: destination, at: index)
     }
     
     private mutating func moveRandomCard(from origin: Card.Partition, to destination: Card.Partition) {
