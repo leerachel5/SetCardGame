@@ -93,9 +93,18 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     }
     
     // MARK: Mutator Methods
-    mutating func draw(count: Int) {
-        for _ in 0..<count {
-            moveRandomCard(from: .deck, to: .faceUp)
+    mutating func draw(count: Int = Self.setCount) {
+        guard cards[.deck]!.count >= count else { return }
+        
+        let selectedCards = getSelectedCards()
+        if selectedCards.count == Self.setCount && selectedCards.first?.matched == true {
+            for selectedCard in selectedCards {
+                replaceCard(selectedCard, with: getRandomCard(from: .deck)!, moveTo: .discarded)
+            }
+        } else {
+            for _ in 0..<count {
+                moveRandomCard(from: .deck, to: .faceUp)
+            }
         }
     }
     

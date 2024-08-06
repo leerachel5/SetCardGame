@@ -32,7 +32,7 @@ class ClassicSetCardGame: ObservableObject {
     }
     
     func drawCards() {
-        game.draw(count: 3)
+        game.draw()
     }
 }
 
