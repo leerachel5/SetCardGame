@@ -24,7 +24,7 @@ struct SetCardGameView: View {
     }
     
     var cards: some View {
-        AspectVGrid(setGame.dealtCards, aspectRatio: 2/3) { card in
+        ScrollAspectVGrid(setGame.dealtCards, aspectRatio: 2/3, minimumWidth: 64) { card in
             SetCardView(card)
                 .onTapGesture {
                     setGame.select(card: card)
