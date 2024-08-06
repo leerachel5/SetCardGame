@@ -13,6 +13,7 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     
     // MARK: Static Properties
     static var setCount: Int { 3 }
+    static var baselineDealtCardCount: Int { 12 }
     
     // MARK: Instance Properties
     private var cards: PartitionedCards!
@@ -117,7 +118,11 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
                 if selectedCard.matched == true {
                     if selectedCards.contains(card) { return }
                     if let newCard = getRandomCard(from: .deck) {
-                        replaceCard(selectedCard, with: newCard, moveTo: .discarded)
+                        if cards[.dealt]!.count > Self.baselineDealtCardCount {
+                            moveCard(selectedCard, to: .discarded)
+                        } else {
+                            replaceCard(selectedCard, with: newCard, moveTo: .discarded)
+                        }
                     } else {
                         moveCard(selectedCard, to: .discarded)
                     }
