@@ -25,6 +25,7 @@
 		EBF95BE82C5F674300C57CDA /* SetCardGameFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF95BE72C5F674300C57CDA /* SetCardGameFeature.swift */; };
 		EBF95BEA2C5F6A1000C57CDA /* ClassicSetCardGame+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF95BE92C5F6A1000C57CDA /* ClassicSetCardGame+Feature.swift */; };
 		EBF95BEC2C60568D00C57CDA /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF95BEB2C60568D00C57CDA /* Array+Extensions.swift */; };
+		EBF95BF02C61B2E600C57CDA /* ClassicSetCardGame+Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF95BEF2C61B2E600C57CDA /* ClassicSetCardGame+Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		EBF95BE72C5F674300C57CDA /* SetCardGameFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameFeature.swift; sourceTree = "<group>"; };
 		EBF95BE92C5F6A1000C57CDA /* ClassicSetCardGame+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassicSetCardGame+Feature.swift"; sourceTree = "<group>"; };
 		EBF95BEB2C60568D00C57CDA /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		EBF95BEF2C61B2E600C57CDA /* ClassicSetCardGame+Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassicSetCardGame+Card.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				EB74D9392C43AE9000FBA58A /* ClassicSetCardGame.swift */,
+				EBF95BEF2C61B2E600C57CDA /* ClassicSetCardGame+Card.swift */,
 				EBF95BE92C5F6A1000C57CDA /* ClassicSetCardGame+Feature.swift */,
 			);
 			path = ViewModel;
@@ -307,6 +310,7 @@
 				EB74D95B2C449D2400FBA58A /* CardSelectionError.swift in Sources */,
 				EBF95BE82C5F674300C57CDA /* SetCardGameFeature.swift in Sources */,
 				EB74D9212C43522D00FBA58A /* Diamond.swift in Sources */,
+				EBF95BF02C61B2E600C57CDA /* ClassicSetCardGame+Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

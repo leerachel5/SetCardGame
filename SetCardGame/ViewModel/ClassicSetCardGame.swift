@@ -5,7 +5,7 @@
 //  Created by Rachel Lee on 7/13/24.
 //
 
-import SwiftUI
+import Foundation
 
 class ClassicSetCardGame: ObservableObject {
     typealias GameModel = SetCardGame<Number, Shape, Shading, Color>
@@ -41,21 +41,5 @@ class ClassicSetCardGame: ObservableObject {
     
     func drawCards() {
         game.draw()
-    }
-}
-
-extension SetCardGame.Card {
-    var borderColor: SwiftUI.Color {
-        if !selected {
-            return .black
-        } else {
-            if matched == true {
-                return .green
-            } else if matched == false {
-                return .red
-            } else {
-                return .yellow
-            }
-        }
     }
 }
