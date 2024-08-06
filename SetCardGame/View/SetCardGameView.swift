@@ -28,8 +28,9 @@ struct SetCardGameView: View {
             Button(action: {
                 setGame.drawCards()
             }, label: {
-                Text("Draw")
+                Text("Deal 3 More Cards")
             })
+            .disabled(setGame.deck.isEmpty)
         }
     }
 }
