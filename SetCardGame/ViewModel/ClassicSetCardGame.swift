@@ -11,12 +11,20 @@ class ClassicSetCardGame: ObservableObject {
     typealias GameModel = SetCardGame<Number, Shape, Shading, Color>
     typealias Card = GameModel.Card
     
-    @Published private var game: GameModel
-    @Published private(set) var score: Int
+    @Published private var game: GameModel!
+    @Published private(set) var score: Int!
     
     init() {
+        initializeNewGame()
+    }
+    
+    private func initializeNewGame() {
         game = SetCardGame(numberOfStartingCards: 12)
         score = 0
+    }
+    
+    func reset() {
+        initializeNewGame()
     }
     
     var deck: Array<Card> {

@@ -31,6 +31,12 @@ struct SetCardGameView: View {
                 Text("Deal 3 More Cards")
             })
             .disabled(setGame.deck.isEmpty)
+            
+            Button(action: {
+                setGame.reset()
+            }, label: {
+                Text("New Game")
+            })
         }
     }
 }
