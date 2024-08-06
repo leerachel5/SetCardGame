@@ -65,7 +65,7 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
     }
     
     private func getSelectedCards() -> Array<Card> {
-        return cards[.faceUp]!.filter({ $0.selected })
+        return cards[.dealt]!.filter({ $0.selected })
     }
     
     private func getIndex(of card: Card) -> Int? {
@@ -103,13 +103,13 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
             }
         } else {
             for _ in 0..<count {
-                moveRandomCard(from: .deck, to: .faceUp)
+                moveRandomCard(from: .deck, to: .dealt)
             }
         }
     }
     
     mutating func select(_ card: Card) {
-        guard card.partition == .faceUp else { return }
+        guard card.partition == .dealt else { return }
         
         var selectedCards = getSelectedCards()
         if selectedCards.count == Self.setCount {
@@ -123,22 +123,22 @@ struct SetCardGame<Number: SetCardGameFeature.Number, Shape: SetCardGameFeature.
                     }
                 } else if selectedCard.matched == false {
                     if let selectedCardIndex = getIndex(of: selectedCard) {
-                        cards[.faceUp]![selectedCardIndex].matched = nil
-                        cards[.faceUp]![selectedCardIndex].selected = false
+                        cards[.dealt]![selectedCardIndex].matched = nil
+                        cards[.dealt]![selectedCardIndex].selected = false
                     }
                 }
             }
         }
         
         guard let chosenIndex = getIndex(of: card) else { return }
-        cards[.faceUp]![chosenIndex].selected.toggle()
+        cards[.dealt]![chosenIndex].selected.toggle()
         
         selectedCards = getSelectedCards()
         if selectedCards.count == Self.setCount {
             let matched = match(cards: selectedCards)
             for card in selectedCards {
                 if let selectedCardIndex = getIndex(of: card) {
-                    cards[.faceUp]![selectedCardIndex].matched = matched
+                    cards[.dealt]![selectedCardIndex].matched = matched
                 }
             }
         }

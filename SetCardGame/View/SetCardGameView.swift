@@ -15,7 +15,7 @@ struct SetCardGameView: View {
         
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
-                ForEach(setGame.faceUpPile) { card in
+                ForEach(setGame.dealtCards) { card in
                     SetCardView(card)
                         .onTapGesture {
                             setGame.select(card: card)

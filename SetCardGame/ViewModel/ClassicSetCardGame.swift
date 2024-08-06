@@ -23,8 +23,8 @@ class ClassicSetCardGame: ObservableObject {
         game.getPartition(for: .deck)
     }
     
-    var faceUpPile: Array<Card> {
-        game.getPartition(for: .faceUp)
+    var dealtCards: Array<Card> {
+        game.getPartition(for: .dealt)
     }
     
     func select(card: Card) {

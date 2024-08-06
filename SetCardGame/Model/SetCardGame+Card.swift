@@ -22,7 +22,7 @@ extension SetCardGame {
         
         enum Partition: CaseIterable {
             case discarded
-            case faceUp
+            case dealt
             case deck
         }
         
