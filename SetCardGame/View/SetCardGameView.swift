@@ -11,19 +11,29 @@ struct SetCardGameView: View {
     @ObservedObject var setGame = ClassicSetCardGame()
     
     var body: some View {
-        Text("Score: \(setGame.score)")
+        score
         
-        ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
-                ForEach(setGame.dealtCards) { card in
-                    SetCardView(card)
-                        .onTapGesture {
-                            setGame.select(card: card)
-                        }
-                }
-            }
+        cards
             .padding()
+        
+        actionButtons
+    }
+    
+    var score: some View {
+        Text("Score: \(setGame.score)")
+    }
+    
+    var cards: some View {
+        AspectVGrid(setGame.dealtCards, aspectRatio: 2/3) { card in
+            SetCardView(card)
+                .onTapGesture {
+                    setGame.select(card: card)
+                }
+                .padding(1)
         }
+    }
+    
+    var actionButtons: some View {
         HStack {
             Button(action: {
                 setGame.drawCards()

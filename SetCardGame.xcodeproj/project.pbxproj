@@ -26,6 +26,7 @@
 		EBF95BEA2C5F6A1000C57CDA /* ClassicSetCardGame+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF95BE92C5F6A1000C57CDA /* ClassicSetCardGame+Feature.swift */; };
 		EBF95BEC2C60568D00C57CDA /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF95BEB2C60568D00C57CDA /* Array+Extensions.swift */; };
 		EBF95BF02C61B2E600C57CDA /* ClassicSetCardGame+Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF95BEF2C61B2E600C57CDA /* ClassicSetCardGame+Card.swift */; };
+		EBF95BF42C61BB2200C57CDA /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF95BF32C61BB2200C57CDA /* AspectVGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		EBF95BE92C5F6A1000C57CDA /* ClassicSetCardGame+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassicSetCardGame+Feature.swift"; sourceTree = "<group>"; };
 		EBF95BEB2C60568D00C57CDA /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		EBF95BEF2C61B2E600C57CDA /* ClassicSetCardGame+Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassicSetCardGame+Card.swift"; sourceTree = "<group>"; };
+		EBF95BF32C61BB2200C57CDA /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				EB74D91C2C434D5600FBA58A /* SetCardView.swift */,
 				EB74D90B2C4342B300FBA58A /* SetCardGameView.swift */,
+				EBF95BF32C61BB2200C57CDA /* AspectVGrid.swift */,
 				EB74D9222C43581A00FBA58A /* Shapes */,
 			);
 			path = View;
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF95BF42C61BB2200C57CDA /* AspectVGrid.swift in Sources */,
 				EB74D92A2C436C2E00FBA58A /* Squiggle.swift in Sources */,
 				EBF95BEC2C60568D00C57CDA /* Array+Extensions.swift in Sources */,
 				EB74D93A2C43AE9000FBA58A /* ClassicSetCardGame.swift in Sources */,
