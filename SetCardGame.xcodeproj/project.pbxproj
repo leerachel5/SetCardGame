@@ -20,7 +20,6 @@
 		EB74D93C2C43AEAB00FBA58A /* SetCardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */; };
 		EB74D9442C43B78900FBA58A /* SetCardGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */; };
 		EB74D9502C447A2A00FBA58A /* AnyInsettableShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D94F2C447A2A00FBA58A /* AnyInsettableShape.swift */; };
-		EB74D95B2C449D2400FBA58A /* CardSelectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D95A2C449D2400FBA58A /* CardSelectionError.swift */; };
 		EB74D9672C450BB800FBA58A /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB74D9662C450BB800FBA58A /* Collection+Extensions.swift */; };
 		EBF95BE82C5F674300C57CDA /* SetCardGameFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF95BE72C5F674300C57CDA /* SetCardGameFeature.swift */; };
 		EBF95BEA2C5F6A1000C57CDA /* ClassicSetCardGame+Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF95BE92C5F6A1000C57CDA /* ClassicSetCardGame+Feature.swift */; };
@@ -55,7 +54,6 @@
 		EB74D9412C43B78800FBA58A /* SetCardGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SetCardGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB74D9432C43B78900FBA58A /* SetCardGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameTests.swift; sourceTree = "<group>"; };
 		EB74D94F2C447A2A00FBA58A /* AnyInsettableShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyInsettableShape.swift; sourceTree = "<group>"; };
-		EB74D95A2C449D2400FBA58A /* CardSelectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectionError.swift; sourceTree = "<group>"; };
 		EB74D9662C450BB800FBA58A /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		EBF95BE72C5F674300C57CDA /* SetCardGameFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardGameFeature.swift; sourceTree = "<group>"; };
 		EBF95BE92C5F6A1000C57CDA /* ClassicSetCardGame+Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassicSetCardGame+Feature.swift"; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 		EB74D9172C434B5C00FBA58A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EB74D95D2C449DA400FBA58A /* Errors */,
 				EB74D93B2C43AEAB00FBA58A /* SetCardGame.swift */,
 				EB74D9342C439D3D00FBA58A /* SetCardGame+Card.swift */,
 				EBF95BE72C5F674300C57CDA /* SetCardGameFeature.swift */,
@@ -188,14 +185,6 @@
 				EBF95BEB2C60568D00C57CDA /* Array+Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		EB74D95D2C449DA400FBA58A /* Errors */ = {
-			isa = PBXGroup;
-			children = (
-				EB74D95A2C449D2400FBA58A /* CardSelectionError.swift */,
-			);
-			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,7 +300,6 @@
 				EBF95BEA2C5F6A1000C57CDA /* ClassicSetCardGame+Feature.swift in Sources */,
 				EB74D9672C450BB800FBA58A /* Collection+Extensions.swift in Sources */,
 				EB74D90A2C4342B300FBA58A /* SetCardGameApp.swift in Sources */,
-				EB74D95B2C449D2400FBA58A /* CardSelectionError.swift in Sources */,
 				EBF95BE82C5F674300C57CDA /* SetCardGameFeature.swift in Sources */,
 				EB74D9212C43522D00FBA58A /* Diamond.swift in Sources */,
 				EBF95BF02C61B2E600C57CDA /* ClassicSetCardGame+Card.swift in Sources */,
