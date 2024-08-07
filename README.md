@@ -7,6 +7,10 @@ https://github.com/user-attachments/assets/42ff3434-9af8-4f3c-9340-9742a0023921
 
 ## Steps to build and run the application:
 
+### Prerequisites
+1. Download [Xcode](https://developer.apple.com/xcode/) if you dont have it already
+2. Install Xcode Command Line Tools if you don't have it already: `xcode-select –-install`
+
 ### Cloning and navigating to the repository
 1. Open your terminal and navigate to the directory you want to store this repo in
 2. Clone the repo using: `git clone https://github.com/leerachel5/SetCardGame.git`
